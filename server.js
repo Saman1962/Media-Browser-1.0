@@ -244,3 +244,4 @@ app.post("/gallery/:picture", upload.any(), (req, res) => {
 
 const PORT = 8080;
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
+
