@@ -1,0 +1,24 @@
+runtime: nodejs
+env: flex
+api_version: 1
+resources:
+  cpu: 0.1
+  memory_gb: 0.5
+  disk_size_gb: 10
+enable_health_check: True
+automatic_scaling:
+  min_num_instances: 1
+  max_num_instances: 5
+  cool_down_period_sec: 60
+  cpu_utilization:
+    target_utilization: 0.7
+handlers:
+  - url: /
+    static_files: client/build/index.html
+    upload: client/build/index.html
+
+  - url: /
+    static_dir: client/build
+
+  - url: /gallery
+    script: server.js
