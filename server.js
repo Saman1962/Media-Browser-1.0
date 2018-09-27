@@ -38,8 +38,8 @@ mongoose
 
 if ((process.env_NODE_ENV = "production")) {
   app.use(express.static("client/build"));
-  //app.use("/gallery", express.static("client/build/gallery/*"));
-  app.get("*", (req, res) => {
+  app.use("/gallery", express.static("client/build/gallery/*"));
+  app.get("/", (req, res) => {
     res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
   });
 }
