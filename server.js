@@ -39,9 +39,6 @@ mongoose
 app.use(express.static("client/build"));
 app.use("/gallery", express.static("client/build/gallery/*"));
 
-app.get("*", (req, res) => {
-  return decodeURIComponent(req.params);
-});
 app.get("/gallery", (req, res) => {
   Gallery.find({}, { name: 1, path: 1, _id: 0, image: 1 }).then(
     gallery => {
