@@ -36,6 +36,10 @@ mongoose
   .then(() => console.log("MongoDB Connected..."))
   .catch(err => console.log(err));
 
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve("client", "build", "index.html")); //on localhost add __dirname
+});
+
 app.use(express.static("client/build"));
 //app.use("/gallery", express.static("client/build/gallery/*"));
 
@@ -236,8 +240,6 @@ app.post("/gallery/:picture", upload.any(), (req, res) => {
   });
   console.log("Data z requestu REQ.FILES", req.files);
 });
-app.get("*", (req, res) => {
-  res.sendFile(path.resolve("client", "build", "index.html")); //on localhost add __dirname
-});
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
