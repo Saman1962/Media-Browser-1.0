@@ -52,15 +52,15 @@ app.get("/gallery", (req, res) => {
     }
   );
 });
-app.get("/gallery/:category/:picture", (req, res) => {
+/*app.get("/gallery/:category/:picture", (req, res) => {
   let category = decodeURIComponent(req.params.category);
   let picture = decodeURIComponent(req.params.picture);
   console.log("/build/gallery/" + category + "/" + picture);
   res.setHeader("Content-Type", "image/*; charset=utf-8");
-  res.sendFile("/build/gallery/" + category + "/" + picture);
-});
+  res.sendFile(__dirname, "/build/gallery/" + category + "/" + picture);
+});*/
 app.get("/gallery/:path", (req, res) => {
-  let path = decodeURIComponent(req.params.path);
+  let path = req.params.path;
 
   Gallery.find({ path: path }, { _id: 0 })
     .then(gallery => {
@@ -236,10 +236,8 @@ app.post("/gallery/:picture", upload.any(), (req, res) => {
   });
   console.log("Data z requestu REQ.FILES", req.files);
 });
-
 app.get("*", (req, res) => {
   res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
 });
-
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));

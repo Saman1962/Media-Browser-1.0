@@ -18,11 +18,7 @@ const ButtonClose = props => {
   return (
     <button type="button" className={classes(props.type)} aria-label="Close">
       <Link
-        to={
-          props.match === undefined
-            ? "/gallery"
-            :  props.match.url
-        }
+        to={props.match === undefined ? "/gallery/" : props.match.url}
         className="d-flex"
         onClick={() => this.closeModal()}
       >

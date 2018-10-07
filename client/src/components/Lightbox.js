@@ -32,7 +32,7 @@ const Lightbox = props => {
             </Router>
             <img
               className="img-fluid w-100"
-              src={"/gallery/" + mainSrc}
+              src={"/gallery/" + mainSrc + "/"}
               alt="fotka"
             />
             {prevSrc !== nextSrc ? (

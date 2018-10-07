@@ -8,8 +8,6 @@ import Footer from "./components/Footer";
 
 import NET_CONFIG from "./paths";
 
-const baseURL = NET_CONFIG.protocol + NET_CONFIG.hostname + NET_CONFIG.port;
-
 class App extends Component {
   constructor() {
     super();
@@ -23,8 +21,9 @@ class App extends Component {
 
   componentDidMount() {
     const url = this.props.match.url;
+    console.log(url);
     if (url === NET_CONFIG.root_dir) {
-      fetch(url)
+      fetch("http://localhost:5000" + url)
         .then(res => res.json())
         .then(data => {
           console.log(data);
@@ -38,7 +37,8 @@ class App extends Component {
         })
         .catch(err => console.log("Something bad happened", err));
     } else if (this.props.match.params.category) {
-      fetch(url)
+      console.log(url);
+      fetch("http://localhost:5000" + url)
         .then(res => res.json())
         .then(data => {
           console.log(data);
