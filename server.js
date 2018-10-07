@@ -74,6 +74,12 @@ app.get("/gallery/:path", (req, res) => {
       res.status(500).send("Nedefinovaná chyba");
     });
 });
+app.get("/", (req, res) => {
+  res.sendFile(path.resolve("client", "build", "index.html")); //on localhost add __dirname
+});
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve("client", "build", "index.html")); //on localhost add __dirname
+});
 
 app.delete("/gallery/:category", (req, res) => {
   let category = req.params.category;
@@ -236,9 +242,6 @@ app.post("/gallery/:picture", upload.any(), (req, res) => {
   });
   console.log("Data z requestu REQ.FILES", req.files);
 });
-/*app.get("/", (req, res) => {
-  res.sendFile(path.resolve("client", "build", "index.html")); //on localhost add __dirname
-});*/
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
