@@ -39,7 +39,14 @@ mongoose
 app.use(express.static("client/build"));
 app.use("/gallery", express.static("client/build/gallery/*"));
 
-app.get("/gallery", (req, res) => {
+app.get("/", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "client", "build", "index.html")); //on localhost add __dirname
+});
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "client", "build", "index.html")); //on localhost add __dirname
+});
+
+app.get("/gallery/", (req, res) => {
   Gallery.find({}, { name: 1, path: 1, _id: 0, image: 1 }).then(
     gallery => {
       res.json({ gallery });
@@ -52,14 +59,14 @@ app.get("/gallery", (req, res) => {
     }
   );
 });
-app.get("/gallery/:category/:picture", (req, res) => {
+app.get("/gallery/:category/:picture/", (req, res) => {
   let category = decodeURIComponent(req.params.category);
   let picture = decodeURIComponent(req.params.picture);
   console.log("/build/gallery/" + category + "/" + picture);
   res.setHeader("Content-Type", "image/*; charset=utf-8");
   res.sendFile(__dirname, "/build/gallery/" + category + "/" + picture);
 });
-app.get("/gallery/:path", (req, res) => {
+app.get("/gallery/:path/", (req, res) => {
   let path = req.params.path;
 
   Gallery.find({ path: path }, { _id: 0 })
@@ -75,7 +82,7 @@ app.get("/gallery/:path", (req, res) => {
     });
 });
 
-app.delete("/gallery/:category", (req, res) => {
+app.delete("/gallery/:category/", (req, res) => {
   let category = req.params.category;
 
   Gallery.findOneAndRemove({ $or: [{ name: category }] })
@@ -95,7 +102,7 @@ app.delete("/gallery/:category", (req, res) => {
     });
 });
 
-app.delete("/:gallery/:picture", (req, res) => {
+app.delete("/:gallery/:picture/", (req, res) => {
   let gallery = req.params.gallery;
   let picture = req.params.picture;
   Gallery.findOneAndRemove(
@@ -117,7 +124,7 @@ app.delete("/:gallery/:picture", (req, res) => {
         .send(e);
     });
 });
-app.post("/gallery", text, (req, res) => {
+app.post("/gallery/", text, (req, res) => {
   let nameObj = JSON.parse(req.body);
   let name =
     JSON.stringify(nameObj.name)
@@ -175,7 +182,7 @@ const upload = multer({
     fileSize: 1024 * 1024
   }
 });
-app.post("/gallery/:picture", upload.any(), (req, res) => {
+app.post("/gallery/:picture/", upload.any(), (req, res) => {
   let picture = decodeURI(req.params.picture);
   let path;
 
@@ -235,13 +242,6 @@ app.post("/gallery/:picture", upload.any(), (req, res) => {
     );
   });
   console.log("Data z requestu REQ.FILES", req.files);
-});
-
-app.get("/", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "client", "build", "index.html")); //on localhost add __dirname
-});
-app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "client", "build", "index.html")); //on localhost add __dirname
 });
 
 const PORT = process.env.PORT || 5000;
