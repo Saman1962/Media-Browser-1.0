@@ -237,7 +237,7 @@ app.post("/gallery/:picture", upload.any(), (req, res) => {
   console.log("Data z requestu REQ.FILES", req.files);
 });
 
-app.get("*", (req, res) => {
+app.get("/", (req, res) => {
   res.sendFile(path.resolve("client", "build", "index.html")); //on localhost add __dirname
 });
 
