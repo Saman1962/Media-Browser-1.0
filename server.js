@@ -75,10 +75,10 @@ app.get("/gallery/:path", (req, res) => {
     });
 });
 app.get("/", (req, res) => {
-  res.sendFile(path.resolve("client", "build", "index.html")); //on localhost add __dirname
+  res.sendFile(path.resolve(__dirname, "client", "build", "index.html")); //on localhost add __dirname
 });
 app.get("*", (req, res) => {
-  res.sendFile(path.resolve("client", "build", "index.html")); //on localhost add __dirname
+  res.sendFile(path.resolve(__dirname, "client", "build", "index.html")); //on localhost add __dirname
 });
 
 app.delete("/gallery/:category", (req, res) => {
