@@ -39,7 +39,6 @@ mongoose
 app.use(express.static("client/build"));
 app.use("/gallery", express.static("client/build/gallery/*"));
 
-
 app.get("/gallery", (req, res) => {
   Gallery.find({}, { name: 1, path: 1, _id: 0, image: 1 }).then(
     gallery => {
@@ -238,13 +237,9 @@ app.post("/gallery/:picture", upload.any(), (req, res) => {
   console.log("Data z requestu REQ.FILES", req.files);
 });
 
-app.get("/", (req, res) => {
-  res.sendFile(path.resolve("client", "build", "index.html")); //on localhost add __dirname
-});
 app.get("*", (req, res) => {
-  res.sendFile(path.resolve("client", "build", "index.html")); //on localhost add __dirname
+  res.sendFile(path.resolve(__dirname, "client", "build", "index.html")); //on localhost add __dirname
 });
-
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
