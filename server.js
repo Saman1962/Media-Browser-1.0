@@ -40,7 +40,7 @@ app.use(express.static("client/build"));
 //app.use("/gallery", express.static("client/build/gallery/*"));
 
 app.get("/", (req, res) => {
-  res.sendFile(path.resolve("client", "build", "index.html")); //on localhost add __dirname
+  res.sendFile(path.join("client", "build", "index.html")); //on localhost add __dirname
 });
 
 app.get("/gallery", (req, res) => {
