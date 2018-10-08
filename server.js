@@ -236,7 +236,7 @@ app.post("/gallery/:picture", upload.any(), (req, res) => {
   console.log("Data z requestu REQ.FILES", req.files);
 });
 
-app.get("/", (req, res) => {
+app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "client/build", "index.html")); //on localhost add __dirname
 });
 const PORT = process.env.PORT || 5000;
