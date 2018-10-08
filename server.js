@@ -49,7 +49,6 @@ app.get("/gallery", (req, res) => {
         .send("Undefined error");
     }
   );
-  next();
 });
 app.get("/gallery", (req, res) => {
   res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
