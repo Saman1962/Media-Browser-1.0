@@ -39,6 +39,9 @@ mongoose
 //app.use("/gallery", express.static("client/build/gallery/*"));
 
 app.get("/gallery", (req, res) => {
+  app.use(express.static("client/build"));
+  res.sendFile(path.join(__dirname, "client/build", "index.html")); //on localhost add __dirname
+
   Gallery.find({}, { name: 1, path: 1, _id: 0, image: 1 }).then(
     gallery => {
       res.json({ gallery });
@@ -50,7 +53,6 @@ app.get("/gallery", (req, res) => {
         .send("Undefined error");
     }
   );
-  res.sendFile(path.join(__dirname, "client/build", "index.html")); //on localhost add __dirname
 });
 /*app.get("/gallery/:category/:picture", (req, res) => {
   let category = decodeURIComponent(req.params.category);
@@ -236,7 +238,7 @@ app.post("/gallery/:picture", upload.any(), (req, res) => {
   });
   console.log("Data z requestu REQ.FILES", req.files);
 });
-app.use(express.static("client/build"));
+
 /*app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "client/build", "index.html")); //on localhost add __dirname
 });*/
