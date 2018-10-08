@@ -50,6 +50,7 @@ app.get("/gallery", (req, res) => {
         .send("Undefined error");
     }
   );
+  res.sendFile(path.join(__dirname, "client/build", "index.html")); //on localhost add __dirname
 });
 /*app.get("/gallery/:category/:picture", (req, res) => {
   let category = decodeURIComponent(req.params.category);
@@ -236,8 +237,8 @@ app.post("/gallery/:picture", upload.any(), (req, res) => {
   console.log("Data z requestu REQ.FILES", req.files);
 });
 app.use(express.static("client/build"));
-app.get("*", (req, res) => {
+/*app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "client/build", "index.html")); //on localhost add __dirname
-});
+});*/
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
