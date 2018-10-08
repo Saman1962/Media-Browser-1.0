@@ -35,8 +35,8 @@ mongoose
   )
   .then(() => console.log("MongoDB Connected..."))
   .catch(err => console.log(err));
-app.use(express.static(path.join(__dirname, "client/build")));
-app.get("/", (req, res) => {
+app.use(express.static(path.join(__dirname, "client", "build")));
+app.get("/gallery", (req, res) => {
   res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
 });
 app.get("/gallery", (req, res) => {
