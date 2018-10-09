@@ -52,7 +52,7 @@ app.get("/gallery", (req, res) => {
 });
 
 app.get("/gallery/:path", (req, res) => {
-  let path = req.params.path;
+  let path = decodeURIComponent(req.params.path);
 
   Gallery.find({ path: path }, { _id: 0 })
     .then(gallery => {
@@ -67,10 +67,10 @@ app.get("/gallery/:path", (req, res) => {
     });
 });
 
-app.delete("/gallery/:category", (req, res) => {
-  let category = req.params.category;
+app.delete("/gallery/:path", (req, res) => {
+  let path = req.params.path;
 
-  Gallery.findOneAndRemove({ $or: [{ name: category }] })
+  Gallery.findOneAndRemove({ $or: [{ name: path }] })
     .then(remove => {
       if (!remove) {
         res.status(404).send("Zvolená galéria neexistuje");
