@@ -5,7 +5,6 @@ import ChangeableBackground from "./components/ChangeableBackground";
 import ItemsContainer from "./containers/ItemsContainer";
 import ItemAddContainer from "./containers/ItemAddContainer";
 import Footer from "./components/Footer";
-import PORT from '../../server';
 import NET_CONFIG from "./paths";
 
 class App extends Component {
@@ -22,8 +21,8 @@ class App extends Component {
   componentDidMount() {
     const url = this.props.match.url;
     console.log(url);
-    if (url === NET_CONFIG.root_dir && PORT !== undefined) {
-      fetch("http:localhost:" + PORT + url)
+    if (url === NET_CONFIG.root_dir) {
+      fetch(url)
         .then(res => res.json())
         .then(data => {
           console.log(data);
@@ -36,9 +35,12 @@ class App extends Component {
           }
         })
         .catch(err => console.log("Something bad happened", err));
-    } else if (this.props.match.params.category && PORT !== undefined) {
+    } else if (
+      this.props.match.params.category &&
+      process.env.PORT !== undefined
+    ) {
       console.log(url);
-      fetch("http:localhost:" + PORT + url)
+      fetch(url)
         .then(res => res.json())
         .then(data => {
           console.log(data);
