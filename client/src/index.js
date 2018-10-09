@@ -7,7 +7,7 @@ import {
   Switch,
   Redirect
 } from "react-router-dom";
-//import registerServiceWorker from "./registerServiceWorker";
+import registerServiceWorker from "./registerServiceWorker";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./css/main.css";
@@ -22,4 +22,4 @@ ReactDOM.render(
   </Router>,
   document.getElementById("root")
 );
-//registerServiceWorker();
+registerServiceWorker();
