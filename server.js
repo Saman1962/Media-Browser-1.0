@@ -14,7 +14,7 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false}));
 app.use(bodyParser.json());
 
-//app.use("/", express.static(__dirname + "/"));
+app.use("/", express.static(__dirname + "/"));
 
 const text = bodyParser.text();
 const db = require("./paths").mongoURI;
@@ -35,7 +35,7 @@ mongoose
   )
   .then(() => console.log("MongoDB Connected..."))
   .catch(err => console.log(err));
-  
+
 app.use(express.static(path.join(__dirname, "client/build")));
 app.get("/", (req, res) => {
   res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
