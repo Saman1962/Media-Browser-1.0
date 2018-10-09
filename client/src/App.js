@@ -23,7 +23,7 @@ class App extends Component {
     const url = this.props.match.url;
     console.log(url);
     if (url === NET_CONFIG.root_dir) {
-      fetch(url)
+      fetch("http:localhost:" + process.env.PORT + url)
         .then(res => res.json())
         .then(data => {
           console.log(data);
@@ -38,7 +38,7 @@ class App extends Component {
         .catch(err => console.log("Something bad happened", err));
     } else if (this.props.match.params.category) {
       console.log(url);
-      fetch(url)
+      fetch("http:localhost:" + process.env.PORT + url)
         .then(res => res.json())
         .then(data => {
           console.log(data);
