@@ -36,7 +36,7 @@ mongoose
   .then(() => console.log("MongoDB Connected..."))
   .catch(err => console.log(err));
 
-app.get("/gallery/", (req, res) => {
+app.get("/gallery", (req, res) => {
   Gallery.find({}, { name: 1, path: 1, _id: 0, image: 1 }).then(
     gallery => {
       res.json({ gallery });
@@ -50,7 +50,7 @@ app.get("/gallery/", (req, res) => {
   );
 });
 
-app.get("/gallery/:path/", (req, res) => {
+app.get("/gallery/:path", (req, res) => {
   let path = decodeURIComponent(req.params.path);
 
   Gallery.find({ path: path }, { _id: 0 })
