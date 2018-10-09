@@ -37,10 +37,8 @@ mongoose
   .catch(err => console.log(err));
 app.use(express.static(path.join(__dirname, "client/build")));
 
-app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
-});
-app.get("/gallery/", (req, res) => {
+
+app.get("/gallery", (req, res) => {
   Gallery.find({}, { name: 1, path: 1, _id: 0, image: 1 }).then(
     gallery => {
       res.json({ gallery });
@@ -232,14 +230,11 @@ app.post("/gallery/:picture", upload.any(), (req, res) => {
   console.log("Data z requestu REQ.FILES", req.files);
 });
 
-if (process.env.NODE_ENV === "production") {
-  // Set static folder
-  app.use(express.static("client/build"));
 
-  app.get("*", (req, res) => {
+ 
+app.use(express.static("client/build"));
+app.get("*", (req, res) => {
     res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
-  });
-}
-
+});
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
