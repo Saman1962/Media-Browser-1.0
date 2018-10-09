@@ -24,7 +24,7 @@ class App extends Component {
     console.log(url);
     if (url === NET_CONFIG.root_dir) {
       fetch(url)
-        .then(res => res.json())
+        .then(res => res.text())
         .then(data => {
           console.log(data);
           if (data.gallery[0].image[0].fullpath !== null) {
@@ -39,7 +39,7 @@ class App extends Component {
     } else if (this.props.match.params.category) {
       console.log(url);
       fetch(url)
-        .then(res => res.json())
+        .then(res => res.text())
         .then(data => {
           console.log(data);
           if (data.gallery[0].image[0].fullpath !== null) {
