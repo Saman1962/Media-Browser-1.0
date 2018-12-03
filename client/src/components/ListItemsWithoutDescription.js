@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Link } from "react-router-dom";
 import Lightbox from "./Lightbox";
+import history from "../index";
 
 const ListItemsWithoutDescription = props => {
   const { photoIndex, match } = props;
@@ -27,6 +28,7 @@ const ListItemsWithoutDescription = props => {
                       onClick={e => {
                         props.handleOpen();
                         props.handleIdx(idx);
+                        history.push("/");
                       }}
                     >
                       <img
