@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Link } from "react-router-dom";
 import IconBack from "../images/category__icon-back.svg";
 const Header = props => {
+  console.log("props", props);
   if (!props.subCategory) {
     return (
       <div className="container ">
