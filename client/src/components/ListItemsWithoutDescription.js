@@ -1,12 +1,11 @@
 import React from "react";
 import { BrowserRouter as Router, Link } from "react-router-dom";
 import Lightbox from "./Lightbox";
-import history from "../index";
 
 const ListItemsWithoutDescription = props => {
   const { photoIndex, match } = props;
   return (
-    <Router forceRefresh={true}>
+    <Router>
       <div className="container">
         <main>
           <div className="row no-gutters align-items-start text-center">
@@ -28,7 +27,6 @@ const ListItemsWithoutDescription = props => {
                       onClick={e => {
                         props.handleOpen();
                         props.handleIdx(idx);
-                        history.replace("/");
                       }}
                     >
                       <img
