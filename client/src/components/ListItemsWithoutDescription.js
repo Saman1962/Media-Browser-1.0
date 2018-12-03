@@ -5,7 +5,7 @@ import Lightbox from "./Lightbox";
 const ListItemsWithoutDescription = props => {
   const { photoIndex, match } = props;
   return (
-    <Router forceRefresh="true">
+    <Router forceRefresh={true}>
       <div className="container">
         <main>
           <div className="row no-gutters align-items-start text-center">
