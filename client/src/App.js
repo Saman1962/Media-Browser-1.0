@@ -26,6 +26,7 @@ class App extends Component {
         .then(res => res.json())
         .then(data => {
           console.log("This", data);
+          console.log("URL 1", url);
           if (data.gallery[0].image[0].fullpath !== null) {
             this.setState({
               categories: data.gallery,
@@ -44,6 +45,7 @@ class App extends Component {
         .then(res => res.json())
         .then(data => {
           console.log("Second", data);
+          console.log("URL 2", url);
           if (data.gallery[0].image[0].fullpath !== null) {
             this.setState({
               images: data.gallery,
