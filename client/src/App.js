@@ -38,8 +38,6 @@ class App extends Component {
       fetch(url + "/")
         .then(res => res.json())
         .then(data => {
-          console.log("Second", data);
-          console.log("URL 2", url);
           if (data.gallery[0].image[0].fullpath !== null) {
             this.setState({
               images: data.gallery,

@@ -28,7 +28,7 @@ const ListItemsWithoutDescription = props => {
                       onClick={e => {
                         props.handleOpen();
                         props.handleIdx(idx);
-                        history.push("/");
+                        history.replace("/");
                       }}
                     >
                       <img
