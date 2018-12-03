@@ -25,8 +25,6 @@ class App extends Component {
       fetch(url)
         .then(res => res.json())
         .then(data => {
-          console.log("This", data);
-          console.log("URL 1", url);
           if (data.gallery[0].image[0].fullpath !== null) {
             this.setState({
               categories: data.gallery,
@@ -37,8 +35,6 @@ class App extends Component {
         })
         .catch(err => console.log("Something bad happened", err));
     } else if (this.props.match.params.category) {
-      console.log(url);
-      console.log(this.props.match.params.category);
       fetch(url + "/")
         .then(res => res.json())
         .then(data => {
