@@ -8,7 +8,6 @@ import {
   Redirect
 } from "react-router-dom";
 import registerServiceWorker from "./registerServiceWorker";
-import { createBrowserHistory } from "history";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./css/main.css";
@@ -25,4 +24,3 @@ ReactDOM.render(
   document.getElementById("root")
 );
 registerServiceWorker();
-export default history;

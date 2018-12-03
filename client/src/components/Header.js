@@ -1,7 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Link } from "react-router-dom";
 import IconBack from "../images/category__icon-back.svg";
-import history from "../index";
 const Header = props => {
   if (!props.subCategory) {
     return (
@@ -22,12 +21,7 @@ const Header = props => {
           <h1 className="header-text--big">Fotogaléria</h1>
           <Router forceRefresh={true}>
             <nav className="nav">
-              <Link
-                to="/gallery/"
-                className="d-inline mt-5"
-                replace={true}
-                onClick={history.push("/")}
-              >
+              <Link to="/gallery/" className="d-inline mt-5">
                 <h2 className="header-text--small ">
                   <img className="mr-5" src={IconBack} alt="Dozadu" />
                   {props.sliced}
