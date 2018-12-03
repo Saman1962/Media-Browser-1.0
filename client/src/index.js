@@ -12,7 +12,6 @@ import registerServiceWorker from "./registerServiceWorker";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./css/main.css";
 
-let history = createBrowserHistory();
 ReactDOM.render(
   <Router forceRefresh={true}>
     <Switch>
