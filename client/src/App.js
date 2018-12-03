@@ -40,7 +40,7 @@ class App extends Component {
       process.env.PORT !== undefined
     ) {
       console.log(url);
-      fetch(url)
+      fetch(url + "/")
         .then(res => res.json())
         .then(data => {
           console.log("Second", data);
