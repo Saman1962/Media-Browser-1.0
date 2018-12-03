@@ -36,10 +36,7 @@ class App extends Component {
           }
         })
         .catch(err => console.log("Something bad happened", err));
-    } else if (
-      this.props.match.params.category &&
-      process.env.PORT !== undefined
-    ) {
+    } else if (this.props.match.params.category) {
       console.log(url);
       fetch(url + "/")
         .then(res => res.json())
