@@ -25,7 +25,7 @@ const Header = props => {
               <Link
                 to="/gallery/"
                 className="d-inline mt-5"
-                onClick={props.match.history.push("/gallery")}
+                onClick={props.match.history.replace("/gallery")}
               >
                 <h2 className="header-text--small ">
                   <img className="mr-5" src={IconBack} alt="Dozadu" />
