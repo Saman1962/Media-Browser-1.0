@@ -4,6 +4,7 @@ import Lightbox from "./Lightbox";
 
 const ListItemsWithoutDescription = props => {
   const { photoIndex, match } = props;
+  console.log(props);
   return (
     <Router forceRefresh={true}>
       <div className="container">
