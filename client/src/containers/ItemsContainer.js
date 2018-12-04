@@ -42,47 +42,43 @@ class ItemsContainer extends React.Component {
     };
     if (!this.props.description) {
       return (
-        <Router forceUpdate={true}>
-          <div>
-            <ListItemsWithDescription
-              data={this.props.data}
-              handleHover={handleHover}
-              handleClick={handleClick}
-              itemDescription={itemDescription}
-            >
-              <ItemAddContainer match={match} />
-            </ListItemsWithDescription>
-          </div>
-        </Router>
+        <div>
+          <ListItemsWithDescription
+            data={this.props.data}
+            handleHover={handleHover}
+            handleClick={handleClick}
+            itemDescription={itemDescription}
+          >
+            <ItemAddContainer match={match} />
+          </ListItemsWithDescription>
+        </div>
       );
     } else {
       return (
-        <Router forceUpdate={true}>
-          <ListItemsWithoutDescription
-            match={match}
-            data={data}
-            handleHover={handleHover}
-            handleClick={handleClick}
-            handleIdx={this.handleIdx}
-            handleOpen={this.handleOpen}
-            photoIndex={photoIndex}
-            isOpen={isOpen}
-            onMovePrevRequest={() =>
-              this.setState({
-                photoIndex:
-                  (photoIndex + this.props.data[0].image.length - 1) %
-                  this.props.data[0].image.length
-              })
-            }
-            onMoveNextRequest={() =>
-              this.setState({
-                photoIndex: (photoIndex + 1) % this.props.data[0].image.length
-              })
-            }
-          >
-            <ItemAddContainer subCategory={true} match={match} />
-          </ListItemsWithoutDescription>
-        </Router>
+        <ListItemsWithoutDescription
+          match={match}
+          data={data}
+          handleHover={handleHover}
+          handleClick={handleClick}
+          handleIdx={this.handleIdx}
+          handleOpen={this.handleOpen}
+          photoIndex={photoIndex}
+          isOpen={isOpen}
+          onMovePrevRequest={() =>
+            this.setState({
+              photoIndex:
+                (photoIndex + this.props.data[0].image.length - 1) %
+                this.props.data[0].image.length
+            })
+          }
+          onMoveNextRequest={() =>
+            this.setState({
+              photoIndex: (photoIndex + 1) % this.props.data[0].image.length
+            })
+          }
+        >
+          <ItemAddContainer subCategory={true} match={match} />
+        </ListItemsWithoutDescription>
       );
     }
   }
