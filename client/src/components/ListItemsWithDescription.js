@@ -21,7 +21,7 @@ const ListItemsWithDescription = props => {
                     <Link
                       className="d-block item__link"
                       to={process.env.PUBLIC_URL + "/gallery/" + item.name}
-                      onClick={history.push(item.name)}
+                      onClick={history.goBack()}
                     >
                       <figure>
                         <img
