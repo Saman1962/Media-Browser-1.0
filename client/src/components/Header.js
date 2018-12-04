@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Link } from "react-router-dom";
 import IconBack from "../images/category__icon-back.svg";
+import history from "../index";
 const Header = props => {
   if (!props.subCategory) {
     return (
@@ -24,7 +25,7 @@ const Header = props => {
               <Link
                 to="/gallery/"
                 className="d-inline mt-5"
-                onMouseEnter={console.log(e)}
+                onClick={history.goBack()}
               >
                 <h2 className="header-text--small ">
                   <img className="mr-5" src={IconBack} alt="Dozadu" />
