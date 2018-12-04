@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Link } from "react-router-dom";
 import IconBack from "../images/category__icon-back.svg";
 const Header = props => {
   console.log("props", props);
-  if (!props.subCategory) {
+  if (!props.subCategory || props.match !== undefined) {
     return (
       <div className="container ">
         <header className="header text-uppercase">
