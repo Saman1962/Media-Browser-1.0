@@ -26,7 +26,6 @@ class App extends Component {
       this.props.match.params.category
     );
     console.log("History from App", history);
-    );
     console.log("this.props.match", this.props.match);
     if (url === NET_CONFIG.root_dir) {
       fetch(url + "/")
