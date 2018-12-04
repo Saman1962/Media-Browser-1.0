@@ -19,7 +19,7 @@ ReactDOM.render(
     <Switch>
       <Route path="/:gallery" component={App} />
       <Route path="/:gallery/:category/" component={App} />
-      <Redirect from="*" to="/gallery/" />
+      <Redirect from="*" to="/gallery" />
     </Switch>
   </Router>,
   document.getElementById("root")
