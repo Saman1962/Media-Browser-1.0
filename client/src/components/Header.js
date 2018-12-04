@@ -21,9 +21,9 @@ const Header = props => {
       <div className="container">
         <header className="header text-uppercase">
           <h1 className="header-text--big">Fotogaléria</h1>
-          <Router forceRefresh={true}>
+          <Router forceRefresh={false}>
             <nav className="nav">
-              <Link to="/gallery/" className="d-inline mt-5">
+              <Link to="/gallery" className="d-inline mt-5">
                 <h2 className="header-text--small ">
                   <img className="mr-5" src={IconBack} alt="Dozadu" />
                   {props.sliced}
