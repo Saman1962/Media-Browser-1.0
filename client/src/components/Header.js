@@ -1,7 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Link } from "react-router-dom";
 import IconBack from "../images/category__icon-back.svg";
-import history from "../index";
 const Header = props => {
   console.log("props", props);
   if (!props.subCategory) {
@@ -41,7 +40,6 @@ const Header = props => {
     );
   }
 };
-history.push("/");
 /*Header.propTypes = {
                     arrow: PropTypes.bool,
             sliced: PropTypes.string
