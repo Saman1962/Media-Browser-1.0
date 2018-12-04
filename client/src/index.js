@@ -24,5 +24,5 @@ ReactDOM.render(
   </Router>,
   document.getElementById("root")
 );
-
+console.log("history", history);
 registerServiceWorker();
