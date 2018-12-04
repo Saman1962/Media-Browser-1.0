@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Link } from "react-router-dom";
 import IconBack from "../images/category__icon-back.svg";
 const Header = props => {
   console.log("props", props);
-  if (!props.subCategory || props.match !== undefined) {
+  if (!props.subCategory) {
     return (
       <div className="container ">
         <header className="header text-uppercase">
@@ -22,7 +22,11 @@ const Header = props => {
           <h1 className="header-text--big">Fotogaléria</h1>
           <Router forceRefresh={true}>
             <nav className="nav">
-              <Link to="/gallery/" className="d-inline mt-5">
+              <Link
+                to="/gallery/"
+                className="d-inline mt-5"
+                onClick={this.props.match.history.replace("/gallery")}
+              >
                 <h2 className="header-text--small ">
                   <img className="mr-5" src={IconBack} alt="Dozadu" />
                   {props.sliced}
