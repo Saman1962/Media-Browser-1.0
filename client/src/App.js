@@ -6,7 +6,7 @@ import ItemsContainer from "./containers/ItemsContainer";
 import ItemAddContainer from "./containers/ItemAddContainer";
 import Footer from "./components/Footer";
 import NET_CONFIG from "./paths";
-
+import history from "./index";
 class App extends Component {
   constructor() {
     super();
@@ -24,6 +24,8 @@ class App extends Component {
     console.log(
       "this.props.match.params.category",
       this.props.match.params.category
+    );
+    console.log("History from App", history);
     );
     console.log("this.props.match", this.props.match);
     if (url === NET_CONFIG.root_dir) {
