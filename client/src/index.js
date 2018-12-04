@@ -5,9 +5,9 @@ import {
   BrowserRouter as Router,
   Route,
   Switch,
-  Redirect,
-  browserHistory
+  Redirect
 } from "react-router-dom";
+import browserHistory from "react-router";
 import registerServiceWorker from "./registerServiceWorker";
 
 import "bootstrap/dist/css/bootstrap.min.css";

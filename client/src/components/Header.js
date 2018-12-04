@@ -1,9 +1,6 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Link,
-  browserHistory
-} from "react-router-dom";
+import { BrowserRouter as Router, Link } from "react-router-dom";
+import browserHistory from "react-router";
 import IconBack from "../images/category__icon-back.svg";
 const Header = props => {
   console.log("props", props);
