@@ -29,7 +29,7 @@ class App extends Component {
     );
     console.log("this.props.match", this.props.match);
     if (url === NET_CONFIG.root_dir) {
-      fetch(url)
+      fetch(url + "/")
         .then(res => res.json())
         .then(data => {
           console.log("data", data);
@@ -43,7 +43,7 @@ class App extends Component {
         })
         .catch(err => console.log("Something bad happened", err));
     } else if (this.props.match.params.category) {
-      fetch(url)
+      fetch(url + "/")
         .then(res => res.json())
         .then(data => {
           console.log("data", data);
