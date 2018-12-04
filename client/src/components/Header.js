@@ -1,5 +1,9 @@
 import React from "react";
-import { BrowserRouter as Router, Link } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Link,
+  browserHistory
+} from "react-router-dom";
 import IconBack from "../images/category__icon-back.svg";
 const Header = props => {
   console.log("props", props);
@@ -25,7 +29,7 @@ const Header = props => {
               <Link
                 to="/gallery/"
                 className="d-inline mt-5"
-                onClick={props.match.history.replace("/gallery")}
+                onClick={browserHistory.push("/gallery")}
               >
                 <h2 className="header-text--small ">
                   <img className="mr-5" src={IconBack} alt="Dozadu" />
