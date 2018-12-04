@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Link } from "react-router-dom";
 import EmptyCategory from "./EmptyCategory";
+import history from "./index";
 
 const ListItemsWithDescription = props => {
   return (
@@ -20,6 +21,7 @@ const ListItemsWithDescription = props => {
                     <Link
                       className="d-block item__link"
                       to={process.env.PUBLIC_URL + "/gallery/" + item.name}
+                      onClick={history.push(item.name)}
                     >
                       <figure>
                         <img

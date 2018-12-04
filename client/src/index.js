@@ -26,3 +26,4 @@ ReactDOM.render(
 );
 console.log("history", history);
 registerServiceWorker();
+export default history;
