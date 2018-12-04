@@ -1,17 +1,17 @@
-import React from 'react';
-import {BrowserRouter as Router} from 'react-router-dom';
-import NET_CONFIG from '../paths';
+import React from "react";
+import { BrowserRouter as Router } from "react-router-dom";
+import NET_CONFIG from "../paths";
 
-import ButtonClose from '../components/ButtonClose';
-import PhotoForm from '../components/PhotoForm';
-import ButtonSubmit from '../components/ButtonSubmit';
+import ButtonClose from "../components/ButtonClose";
+import PhotoForm from "../components/PhotoForm";
+import ButtonSubmit from "../components/ButtonSubmit";
 
 class PhotoAddContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       dropzoneActive: false,
-      files: [],
+      files: []
     };
     this.onDrop = this.onDrop.bind(this);
     this.onDragEnter = this.onDragEnter.bind(this);
@@ -22,19 +22,19 @@ class PhotoAddContainer extends React.Component {
   onDrop(files) {
     let joined = this.state.files.concat(files);
     this.setState({
-      files: joined,
+      files: joined
     });
   }
 
   onDragEnter() {
     this.setState({
-      dropzoneActive: true,
+      dropzoneActive: true
     });
   }
 
   onDragLeave() {
     this.setState({
-      dropzoneActive: false,
+      dropzoneActive: false
     });
   }
 
@@ -43,7 +43,7 @@ class PhotoAddContainer extends React.Component {
 
     let data = new FormData();
     this.state.files.map(file => {
-      return data.append('files', file);
+      return data.append("files", file);
     });
 
     let url =
@@ -55,12 +55,12 @@ class PhotoAddContainer extends React.Component {
 
     if (this.state.files.length > 0) {
       fetch(url, {
-        method: 'POST',
-        mode: 'no-cors',
-        body: data,
-      }).catch(err => console.log('Something bad happened', err));
+        method: "POST",
+        mode: "no-cors",
+        body: data
+      }).catch(err => console.log("Something bad happened", err));
     } else {
-      alert('Vyber obrazok pre pridanie');
+      alert("Vyber obrazok pre pridanie");
     }
   }
 

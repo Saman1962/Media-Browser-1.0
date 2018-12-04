@@ -23,11 +23,7 @@ const ItemAdd = props => {
         >
           <img
             className="item__add--category"
-            src={
-              props.type === "photo"
-                ? IconPhoto
-                : IconCategory
-            }
+            src={props.type === "photo" ? IconPhoto : IconCategory}
             alt=""
           />
           <h4 className="item__add--text">{props.text}</h4>

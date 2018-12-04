@@ -1,22 +1,22 @@
-import React from 'react';
-import {BrowserRouter as Router} from 'react-router-dom';
-import NET_CONFIG from '../paths';
+import React from "react";
+import { BrowserRouter as Router } from "react-router-dom";
+import NET_CONFIG from "../paths";
 
-import ButtonClose from '../components/ButtonClose';
-import ButtonSubmit from '../components/ButtonSubmit';
-import CategoryForm from '../components/CategoryForm';
+import ButtonClose from "../components/ButtonClose";
+import ButtonSubmit from "../components/ButtonSubmit";
+import CategoryForm from "../components/CategoryForm";
 
 class CategoryAddContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      category: '',
+      category: ""
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleCategory = this.handleCategory.bind(this);
   }
   handleChange(e) {
-    this.setState({category: e.target.value});
+    this.setState({ category: e.target.value });
   }
   handleCategory() {
     const name = this.state.category;
@@ -27,16 +27,16 @@ class CategoryAddContainer extends React.Component {
           NET_CONFIG.port +
           NET_CONFIG.root_dir,
         {
-          method: 'POST',
-          mode: 'no-cors',
+          method: "POST",
+          mode: "no-cors",
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json"
           },
-          body: JSON.stringify({name: name}),
-        },
-      ).catch(err => console.log('Something bad happened', err));
+          body: JSON.stringify({ name: name })
+        }
+      ).catch(err => console.log("Something bad happened", err));
     } else {
-      alert('Zadajte názov kategórie');
+      alert("Zadajte názov kategórie");
     }
   }
 

@@ -6,7 +6,7 @@ import ItemsContainer from "./containers/ItemsContainer";
 import ItemAddContainer from "./containers/ItemAddContainer";
 import Footer from "./components/Footer";
 import NET_CONFIG from "./paths";
-import history from "./index";
+
 class App extends Component {
   constructor() {
     super();
@@ -25,10 +25,9 @@ class App extends Component {
       "this.props.match.params.category",
       this.props.match.params.category
     );
-    console.log("History from App", history);
     console.log("this.props.match", this.props.match);
     if (url === NET_CONFIG.root_dir) {
-      fetch(url + "/")
+      fetch("http://localhost:5000/" + this.props.match.params.gallery)
         .then(res => res.json())
         .then(data => {
           console.log("data", data);
@@ -42,7 +41,7 @@ class App extends Component {
         })
         .catch(err => console.log("Something bad happened", err));
     } else if (this.props.match.params.category) {
-      fetch(url + "/")
+      fetch("http://localhost:5000/gallery/" + this.props.match.params.category)
         .then(res => res.json())
         .then(data => {
           console.log("data", data);

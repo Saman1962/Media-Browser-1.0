@@ -1,8 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Link } from "react-router-dom";
 import EmptyCategory from "./EmptyCategory";
-import history from "./index";
-
 const ListItemsWithDescription = props => {
   return (
     <div className="container">
