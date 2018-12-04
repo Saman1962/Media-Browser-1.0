@@ -1,6 +1,5 @@
 import React from "react";
 import { BrowserRouter as Router, Link } from "react-router-dom";
-import browserHistory from "react-router";
 import IconBack from "../images/category__icon-back.svg";
 const Header = props => {
   console.log("props", props);
@@ -23,11 +22,7 @@ const Header = props => {
           <h1 className="header-text--big">Fotogaléria</h1>
           <Router forceRefresh={true}>
             <nav className="nav">
-              <Link
-                to="/gallery/"
-                className="d-inline mt-5"
-                onClick={browserHistory.push("/gallery")}
-              >
+              <Link to="/gallery/" className="d-inline mt-5">
                 <h2 className="header-text--small ">
                   <img className="mr-5" src={IconBack} alt="Dozadu" />
                   {props.sliced}

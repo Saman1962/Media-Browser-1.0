@@ -7,14 +7,15 @@ import {
   Switch,
   Redirect
 } from "react-router-dom";
-import browserHistory from "react-router";
+import createBrowserHistory from "history/createBrowserHistory";
 import registerServiceWorker from "./registerServiceWorker";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./css/main.css";
 
+let history = createBrowserHistory();
 ReactDOM.render(
-  <Router forceRefresh={true} history={browserHistory}>
+  <Router forceRefresh={true} history={history}>
     <Switch>
       <Route exact path="/:gallery/" component={App} />
       <Route path="/:gallery/:category/" component={App} />
@@ -23,4 +24,5 @@ ReactDOM.render(
   </Router>,
   document.getElementById("root")
 );
+
 registerServiceWorker();
