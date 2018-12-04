@@ -21,6 +21,11 @@ class App extends Component {
   componentDidMount() {
     const url = this.props.match.url;
     console.log(url);
+    console.log(
+      "this.props.match.params.category",
+      this.props.match.params.category
+    );
+    console.log("this.props.match", this.props.match);
     if (url === NET_CONFIG.root_dir) {
       fetch(url)
         .then(res => res.json())
@@ -36,7 +41,7 @@ class App extends Component {
         })
         .catch(err => console.log("Something bad happened", err));
     } else if (this.props.match.params.category) {
-      fetch(url + "/" + this.props.match.params.category)
+      fetch(url)
         .then(res => res.json())
         .then(data => {
           console.log("data", data);
