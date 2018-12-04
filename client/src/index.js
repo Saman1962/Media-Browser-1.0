@@ -16,7 +16,7 @@ ReactDOM.render(
   <Router forceRefresh={true}>
     <Switch>
       <Route exact path="/:gallery/" component={App} />
-      <Route exact path="/:gallery/:category/" component={App} />
+      <Route path="/:gallery/:category/" component={App} />
       <Redirect from="*" to="/gallery/" />
     </Switch>
   </Router>,
