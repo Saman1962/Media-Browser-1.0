@@ -12,10 +12,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./css/main.css";
 
 ReactDOM.render(
-  <Router>
+  <Router forceRefresh={true}>
     <Switch>
-      <Route exact path="/:gallery/" component={App} />
-      <Route exact path="/:gallery/:category/" component={App} />
+      <Route exact path="/:gallery" component={App} />
+      <Route exact path="/:gallery/:category" component={App} />
       <Redirect from="*" to="/gallery/" />
     </Switch>
   </Router>,

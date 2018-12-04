@@ -25,6 +25,7 @@ class App extends Component {
       "this.props.match.params.category",
       this.props.match.params.category
     );
+
     console.log("this.props.match", this.props.match);
     if (url === NET_CONFIG.root_dir) {
       fetch("http://localhost:5000/" + this.props.match.params.gallery)
