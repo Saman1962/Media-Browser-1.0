@@ -56,6 +56,7 @@ class App extends Component {
         })
         .catch(err => console.log("Something bad happened", err));
     }
+    this.forceUpdate();
   }
 
   handleHover(e) {
