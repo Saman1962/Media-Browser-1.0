@@ -17,7 +17,7 @@ let history = createBrowserHistory();
 ReactDOM.render(
   <Router forceRefresh={true} history={history}>
     <Switch>
-      <Route exact path="/:gallery/" component={App} />
+      <Route path="/:gallery" component={App} />
       <Route path="/:gallery/:category/" component={App} />
       <Redirect from="*" to="/gallery/" />
     </Switch>
