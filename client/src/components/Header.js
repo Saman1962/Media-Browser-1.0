@@ -22,12 +22,13 @@ const Header = props => {
           <h1 className="header-text--big">Fotogaléria</h1>
           <Router>
             <nav className="nav">
-              <Link to="/gallery" className="d-inline mt-5">
+              <Link to="/gallery/" className="d-inline mt-5">
                 <h2 className="header-text--small ">
                   <img className="mr-5" src={IconBack} alt="Dozadu" />
                   {props.sliced}
                 </h2>
               </Link>
+              <Route exact path="/:gallery" component={App} />
             </nav>
           </Router>
           <hr className="horizontal-line" />
