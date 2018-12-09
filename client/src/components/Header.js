@@ -1,8 +1,13 @@
 import React from "react";
 import { BrowserRouter as Router, Link } from "react-router-dom";
 import IconBack from "../images/category__icon-back.svg";
+import { useEffect } from "react";
 
 const Header = props => {
+  useEffect(() => {
+    this.forceRefresh();
+  });
+  console.log(props);
   if (!props.subCategory) {
     return (
       <div className="container ">
