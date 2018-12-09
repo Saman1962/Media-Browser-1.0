@@ -19,7 +19,7 @@ class App extends Component {
   }
   componentDidUpdate(prevProps) {
     if (this.props !== prevProps) {
-      this.setState(this.state);
+      this.forceUpdate();
     }
   }
   componentDidMount() {
