@@ -18,7 +18,7 @@ class App extends Component {
     this.handleHover = this.handleHover.bind(this);
   }
 
-  componentDidMount(prevProps) {
+  componentDidMount() {
     const url = this.props.match.url;
     console.log(url);
     console.log(
@@ -55,9 +55,6 @@ class App extends Component {
           }
         })
         .catch(err => console.log("Something bad happened", err));
-    }
-    if (this.props !== prevProps) {
-      this.forceUpdate();
     }
   }
 
