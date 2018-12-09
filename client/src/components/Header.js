@@ -17,7 +17,6 @@ const Header = props => {
     );
   } else {
     return (
-      <Route exact path="/:gallery" component={App}/>
       <div className="container">
         <header className="header text-uppercase">
           <h1 className="header-text--big">Fotogaléria</h1>
@@ -30,7 +29,7 @@ const Header = props => {
                 </h2>
               </Link>
             </nav>
-            </Router>
+          </Router>
           <hr className="horizontal-line" />
         </header>
       </div>
