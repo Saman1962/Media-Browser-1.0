@@ -5,7 +5,7 @@ import { useEffect } from "react";
 
 const Header = props => {
   useEffect(() => {
-    this.forceRefresh();
+    this.forceUpdate();
   });
   console.log("Header props", props);
   if (!props.subCategory) {

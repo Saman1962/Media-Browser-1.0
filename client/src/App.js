@@ -17,7 +17,11 @@ class App extends Component {
     };
     this.handleHover = this.handleHover.bind(this);
   }
- 
+ componentDidUpdate(prevProps){
+   if(prevProps !== this.props){
+     this.forceUpdate();
+   }
+ }
   componentDidMount() {
     const url = this.props.match.url;
     console.log(url);
