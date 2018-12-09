@@ -19,7 +19,6 @@ class App extends Component {
   }
   componentWillUpdate(nextProps) {
     if (nextProps.match.url !== this.props.match.url) {
-      this.forceUpdate();
       console.log("FORCE", nextProps.match.url, this.props.match.url);
     }
   }
