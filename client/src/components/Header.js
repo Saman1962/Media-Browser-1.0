@@ -1,7 +1,7 @@
 import React from "react";
-import { BrowserRouter as Router, Link, Route } from "react-router-dom";
+import { BrowserRouter as Router, Link } from "react-router-dom";
 import IconBack from "../images/category__icon-back.svg";
-import App from "../App";
+
 const Header = props => {
   if (!props.subCategory) {
     return (
