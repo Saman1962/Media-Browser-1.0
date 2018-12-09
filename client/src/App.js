@@ -57,7 +57,11 @@ class App extends Component {
         .catch(err => console.log("Something bad happened", err));
     }
   }
-
+  componentDidUpdate(prevProps) {
+    if (this.props.match.url !== prevProps.match.url) {
+      this.forceUpdate();
+    }
+  }
   handleHover(e) {
     e.persist();
     let nameOfPicture;
