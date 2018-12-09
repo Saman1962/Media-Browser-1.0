@@ -28,7 +28,6 @@ const Header = props => {
                   {props.sliced}
                 </h2>
               </Link>
-              <Route exact path="/:gallery" component={App} />
             </nav>
           </Router>
           <hr className="horizontal-line" />
