@@ -17,15 +17,7 @@ class App extends Component {
     };
     this.handleHover = this.handleHover.bind(this);
   }
-  shouldComponentUpdate(nextProps) {
-    if (nextProps.match.url !== this.props.match.url) {
-      console.log("SET STATE??", nextProps.match.url, this.props.match.url);
-      this.setState({});
-    }
-    console.log("true");
 
-    return true;
-  }
   componentDidMount() {
     const url = this.props.match.url;
     console.log(url);
@@ -65,7 +57,12 @@ class App extends Component {
         .catch(err => console.log("Something bad happened", err));
     }
   }
-
+  shouldComponentUpdate(nextProps) {
+    if (nextProps.match.url !== this.props.match.url) {
+      console.log("SET STATE??", nextProps.match.url, this.props.match.url);
+      this.setState({});
+    }
+  }
   handleHover(e) {
     e.persist();
     let nameOfPicture;
