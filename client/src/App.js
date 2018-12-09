@@ -18,13 +18,16 @@ class App extends Component {
     this.handleHover = this.handleHover.bind(this);
   }
 
-  componentDidMount() {
+  componentDidMount(prevProps) {
     const url = this.props.match.url;
     console.log(url);
     console.log(
       "this.props.match.params.category",
       this.props.match.params.category
     );
+    if (this.props !== prevProps) {
+      this.setState(this.state);
+    }
 
     console.log("this.props.match", this.props.match);
     if (url === NET_CONFIG.root_dir) {
