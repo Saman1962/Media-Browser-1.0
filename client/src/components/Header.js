@@ -1,7 +1,7 @@
 import React from "react";
-import { BrowserRouter as Router, Link } from "react-router-dom";
+import { BrowserRouter as Router, Link, Route } from "react-router-dom";
 import IconBack from "../images/category__icon-back.svg";
-
+import App from "../App";
 const Header = props => {
   if (!props.subCategory) {
     return (
@@ -20,8 +20,7 @@ const Header = props => {
       <div className="container">
         <header className="header text-uppercase">
           <h1 className="header-text--big">Fotogaléria</h1>
-          <Router forceRefresh={true}>
-            <Route exact path="/:gallery" component={App} />
+          <Route exact path="/:gallery" component={App}>
             <nav className="nav">
               <Link to="/gallery" className="d-inline mt-5">
                 <h2 className="header-text--small ">
@@ -30,7 +29,7 @@ const Header = props => {
                 </h2>
               </Link>
             </nav>
-          </Router>
+          </Route>
           <hr className="horizontal-line" />
         </header>
       </div>
