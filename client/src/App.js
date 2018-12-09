@@ -20,7 +20,7 @@ class App extends Component {
   componentDidUpdate(prevProps) {
     if (prevProps.match.url !== this.props.match.url) {
       console.log("true");
-      this.forceUpdate();
+      forceUpdate();
       console.log(prevProps.match.url, this.props.match.url);
       return true;
     }
