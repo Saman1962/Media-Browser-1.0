@@ -14,10 +14,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use("/", express.static(__dirname + "/"));
-app.use(
+/*app.use(
   "/gallery",
   express.static(path.join(__dirname, "client/build/gallery/"))
-);
+);*/
 const text = bodyParser.text();
 const db = require("./paths").mongoURI;
 
