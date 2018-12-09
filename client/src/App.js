@@ -26,7 +26,7 @@ class App extends Component {
       this.props.match.params.category
     );
     if (this.props !== prevProps) {
-      this.setState(this.state);
+      this.forceUpdate();
     }
 
     console.log("this.props.match", this.props.match);
