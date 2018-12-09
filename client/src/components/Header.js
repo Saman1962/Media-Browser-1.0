@@ -7,7 +7,7 @@ const Header = props => {
   useEffect(() => {
     this.forceRefresh();
   });
-  console.log(props);
+  console.log("Header props", props);
   if (!props.subCategory) {
     return (
       <div className="container ">
@@ -27,7 +27,10 @@ const Header = props => {
           <h1 className="header-text--big">Fotogaléria</h1>
           <Router forceRefresh={true}>
             <nav className="nav">
-              <Link to="/gallery/" className="d-inline mt-5">
+              <Link
+                to={"/" + props.match.gallery + "/"}
+                className="d-inline mt-5"
+              >
                 <h2 className="header-text--small ">
                   <img className="mr-5" src={IconBack} alt="Dozadu" />
                   {props.sliced}
