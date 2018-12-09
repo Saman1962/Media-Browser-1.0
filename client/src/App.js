@@ -42,7 +42,7 @@ class App extends Component {
         })
         .catch(err => console.log("Something bad happened", err));
     } else if (this.props.match.params.category) {
-      fetch("http://localhost:5000/" + this.props.match.params.category)
+      fetch("http://localhost:5000" + this.props.match.url)
         .then(res => res.json())
         .then(data => {
           console.log("data", data);

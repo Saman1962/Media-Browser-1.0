@@ -1,6 +1,5 @@
 import React from "react";
 import Modal from "react-modal";
-import { BrowserRouter as Router } from "react-router-dom";
 import ListItemsWithDescription from "../components/ListItemsWithDescription";
 import ListItemsWithoutDescription from "../components/ListItemsWithoutDescription";
 import ItemAddContainer from "./ItemAddContainer";
