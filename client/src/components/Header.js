@@ -28,7 +28,7 @@ const Header = props => {
           <Router forceRefresh={true}>
             <nav className="nav">
               <Link
-                to={"/" + props.match.gallery + "/"}
+                to={{ pathname: "/" + props.match.params.gallery + "/" }}
                 className="d-inline mt-5"
               >
                 <h2 className="header-text--small ">
