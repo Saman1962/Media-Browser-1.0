@@ -32,7 +32,7 @@ class App extends Component {
 
     console.log("this.props.match", this.props.match);
     if (url === NET_CONFIG.root_dir) {
-      fetch(this.props.match.url)
+      fetch(url)
         .then(res => res.json())
         .then(data => {
           console.log("data", data);
