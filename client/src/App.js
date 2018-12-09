@@ -21,6 +21,8 @@ class App extends Component {
     if (nextProps.match.url !== this.props.match.url) {
       return true;
     }
+    console.log("false");
+    return false;
   }
   componentDidMount() {
     const url = this.props.match.url;
