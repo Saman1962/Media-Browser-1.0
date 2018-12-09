@@ -21,6 +21,7 @@ class App extends Component {
     if (nextProps.match.url !== this.props.match.url) {
       console.log("SET STATE??", nextProps.match.url, this.props.match.url);
       this.setState({});
+      return true;
     }
   }
   componentDidMount() {
