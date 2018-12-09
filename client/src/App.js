@@ -80,7 +80,6 @@ class App extends Component {
   }
 
   render() {
-    this.forceUpdate();
     let images = this.state.images;
     if (
       images === undefined ||
