@@ -20,7 +20,7 @@ const Header = props => {
       <div className="container">
         <header className="header text-uppercase">
           <h1 className="header-text--big">Fotogaléria</h1>
-          <Router>
+          <Router forceRefresh={true}>
             <nav className="nav">
               <Link to="/gallery/" replace className="d-inline mt-5">
                 <h2 className="header-text--small ">
