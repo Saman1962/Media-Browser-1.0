@@ -17,7 +17,6 @@ class App extends Component {
       match: ""
     };
     this.handleHover = this.handleHover.bind(this);
-    this.updateMatch = this.updateMatch.bind(this);
   }
 
   componentDidMount() {
@@ -79,11 +78,7 @@ class App extends Component {
       });
     }
   }
-  updateMatch(state) {
-    if (state !== undefined) {
-      this.setState({ match: state });
-    }
-  }
+
   render() {
     let images = this.state.images;
     if (
@@ -98,11 +93,7 @@ class App extends Component {
       return (
         <div>
           <ChangeableBackground change={this.state.backgroundChange} />
-          <Header
-            subCategory={false}
-            match={this.props}
-            updateMatch={this.updateMatch}
-          />
+          <Header subCategory={false} match={this.props} />
           <ItemsContainer
             description={false}
             data={this.state.categories}
@@ -120,12 +111,7 @@ class App extends Component {
       return (
         <div>
           <ChangeableBackground change={this.state.backgroundChange} />
-          <Header
-            subCategory={true}
-            sliced={sliced}
-            match={this.props}
-            updateMatch={this.updateMatch}
-          />
+          <Header subCategory={true} sliced={sliced} match={this.props} />
           <ItemsContainer
             description={true}
             data={images}
