@@ -18,7 +18,7 @@ class App extends Component {
     this.handleHover = this.handleHover.bind(this);
   }
   shouldComponentUpdate(nextProps) {
-    if (nextProps.match.url !== this.props.match.url) {
+    if (nextProps.match.url === this.props.match.url) {
       console.log("false");
       return false;
     }
