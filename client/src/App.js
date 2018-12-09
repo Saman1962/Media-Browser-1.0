@@ -18,12 +18,12 @@ class App extends Component {
     this.handleHover = this.handleHover.bind(this);
   }
   shouldComponentUpdate(nextProps) {
-    if (this.nextProps.match.url === this.props.match.url) {
-      console.log("UPDATE??", nextProps.match.url, this.props.match.url);
-      return true;
+    if (this.nextProps.match.url !== this.props.match.url) {
+      console.log("SET STATE??", nextProps.match.url, this.props.match.url);
+      this.setState({});
     }
     console.log("true");
-    this.setState({});
+
     return true;
   }
   componentDidMount() {
