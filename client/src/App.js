@@ -19,7 +19,7 @@ class App extends Component {
   }
   shouldComponentUpdate(nextProps) {
     if (nextProps.match.url !== this.props.match.url) {
-      true;
+      return true;
     }
   }
   componentDidMount() {
