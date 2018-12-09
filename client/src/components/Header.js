@@ -30,7 +30,6 @@ const Header = props => {
                 </h2>
               </Link>
             </nav>
-            <Route />
           </Router>
           <hr className="horizontal-line" />
         </header>
