@@ -13,19 +13,15 @@ class App extends Component {
     this.state = {
       categories: [],
       images: [],
-      backgroundChange: ""
+      backgroundChange: "",
+      match: ""
     };
     this.handleHover = this.handleHover.bind(this);
   }
-  shouldComponentUpdate(nextProps) {
-    if (nextProps.match.url !== this.props.match.url) {
-      console.log("SET STATE??", nextProps.match.url, this.props.match.url);
-      this.setState({});
-      return true;
-    }
-  }
+
   componentDidMount() {
     const url = this.props.match.url;
+
     console.log(url);
     console.log(
       "this.props.match.params.category",
@@ -34,6 +30,7 @@ class App extends Component {
 
     console.log("this.props.match", this.props.match);
     if (url === NET_CONFIG.root_dir) {
+      this.setState({ match: url });
       fetch(url)
         .then(res => res.json())
         .then(data => {
@@ -48,6 +45,7 @@ class App extends Component {
         })
         .catch(err => console.log("Something bad happened", err));
     } else if (this.props.match.params.category) {
+      this.setState({ match: this.props.match.category });
       fetch(this.props.match.params.category)
         .then(res => res.json())
         .then(data => {
