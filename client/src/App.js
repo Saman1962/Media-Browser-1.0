@@ -17,7 +17,11 @@ class App extends Component {
     };
     this.handleHover = this.handleHover.bind(this);
   }
-
+  shouldComponentUpdate(prevProps) {
+    if (this.props.match.url !== prevProps.match.url) {
+      this.forceUpdate();
+    }
+  }
   componentDidMount() {
     const url = this.props.match.url;
     console.log(url);
@@ -57,11 +61,7 @@ class App extends Component {
         .catch(err => console.log("Something bad happened", err));
     }
   }
-  shouldComponentUpdate(prevProps) {
-    if (this.props.match.url !== prevProps.match.url) {
-      this.forceUpdate();
-    }
-  }
+
   handleHover(e) {
     e.persist();
     let nameOfPicture;
