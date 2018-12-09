@@ -25,9 +25,6 @@ class App extends Component {
       "this.props.match.params.category",
       this.props.match.params.category
     );
-    if (this.props !== prevProps) {
-      this.forceUpdate();
-    }
 
     console.log("this.props.match", this.props.match);
     if (url === NET_CONFIG.root_dir) {
@@ -59,7 +56,9 @@ class App extends Component {
         })
         .catch(err => console.log("Something bad happened", err));
     }
-    this.forceUpdate();
+    if (this.props !== prevProps) {
+      this.forceUpdate();
+    }
   }
 
   handleHover(e) {
