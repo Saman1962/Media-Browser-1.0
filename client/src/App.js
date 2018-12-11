@@ -8,8 +8,8 @@ import Footer from "./components/Footer";
 import NET_CONFIG from "./paths";
 
 class App extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       categories: [],
       images: [],
@@ -42,8 +42,8 @@ class App extends Component {
                 NET_CONFIG.root_dir + data.gallery[0].image[0].fullpath
             });
           }
-          console.log("this.state main", this.state);
         })
+        .then(() => console.log("this.state main", this.state))
         .catch(err => console.log("Something bad happened", err));
     } else if (this.props.match.params.category) {
       fetch(this.props.match.params.category)
@@ -59,8 +59,8 @@ class App extends Component {
                 NET_CONFIG.root_dir + data.gallery[0].image[0].fullpath
             });
           }
-          console.log("this.state second", this.state);
         })
+        .then(() => console.log("this.state second", this.state))
         .catch(err => console.log("Something bad happened", err));
     }
   }
