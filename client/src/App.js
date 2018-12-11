@@ -95,7 +95,11 @@ class App extends Component {
       return (
         <div>
           <ChangeableBackground change={this.state.backgroundChange} />
-          <Header subCategory={false} match={this.props} />
+          <Header
+            subCategory={false}
+            match={this.props}
+            history={this.props.history}
+          />
           <ItemsContainer
             description={false}
             data={this.state.categories}
@@ -113,7 +117,12 @@ class App extends Component {
       return (
         <div>
           <ChangeableBackground change={this.state.backgroundChange} />
-          <Header subCategory={true} sliced={sliced} match={this.props} />
+          <Header
+            subCategory={true}
+            sliced={sliced}
+            match={this.props}
+            history={this.props.history}
+          />
           <ItemsContainer
             description={true}
             data={images}
