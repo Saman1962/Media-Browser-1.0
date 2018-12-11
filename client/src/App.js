@@ -20,7 +20,7 @@ class App extends Component {
   }
   componentDidMount() {
     const url = this.props.match.url;
-
+    this.setState({ state: this.state });
     console.log(url);
     console.log(
       "this.props.match.params.category",
