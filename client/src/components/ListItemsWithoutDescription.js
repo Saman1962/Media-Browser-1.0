@@ -1,5 +1,6 @@
 import React from "react";
-import { BrowserRouter as Router, Link } from "react-router-dom";
+import { BrowserRouter as Router, Link, Route } from "react-router-dom";
+import App from "../App";
 import Lightbox from "./Lightbox";
 
 const ListItemsWithoutDescription = props => {
@@ -65,6 +66,7 @@ const ListItemsWithoutDescription = props => {
           />
         )}
       </div>
+      <Route path="/:gallery/:category" component={App} />
     </Router>
   );
 };

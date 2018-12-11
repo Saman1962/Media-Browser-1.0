@@ -13,11 +13,11 @@ import "./css/main.css";
 
 ReactDOM.render(
   <Router forceRefresh={true}>
-    <div>
+    <Switch>
       <Route path="/:gallery/" component={App} />
-      <Route path="/:gallery/:category" component={App} />
+    
       <Redirect from="*" to="/gallery/" />
-    </div>
+    </Switch>
   </Router>,
   document.getElementById("root")
 );
