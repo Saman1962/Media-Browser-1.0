@@ -18,10 +18,12 @@ class App extends Component {
     };
     this.handleHover = this.handleHover.bind(this);
   }
-  componentDidMount() {
-    console.log("Did mOunt,", this.state);
-    const url = this.props.match.url;
+  componentWillUpdate() {
     this.setState({ state: this.state });
+  }
+  componentDidMount() {
+    const url = this.props.match.url;
+
     console.log(url);
     console.log(
       "this.props.match.params.category",
