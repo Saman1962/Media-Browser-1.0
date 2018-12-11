@@ -5,7 +5,6 @@ import Lightbox from "./Lightbox";
 const ListItemsWithoutDescription = props => {
   const { photoIndex, match } = props;
   console.log(props);
-  props.history.replace("/gallery/");
   return (
     <Router>
       <div className="container">

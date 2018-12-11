@@ -101,7 +101,6 @@ class App extends Component {
             data={this.state.categories}
             handleHover={this.handleHover}
             match={this.props.match}
-            history={this.props.history}
           >
             <ItemAddContainer subCategory={true} handleHover={false} />
           </ItemsContainer>
@@ -120,7 +119,6 @@ class App extends Component {
             data={images}
             handleHover={this.handleHover}
             match={this.props.match}
-            history={this.props.history}
           >
             <ItemAddContainer
               subCategory={false}
