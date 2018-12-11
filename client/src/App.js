@@ -22,10 +22,7 @@ class App extends Component {
     const url = this.props.match.url;
 
     console.log(url);
-    console.log(
-      "this.props.match.params.category",
-      this.props.match.params.category
-    );
+    console.log("this.props", this.props);
 
     console.log("this.props.match", this.props.match);
 
