@@ -18,9 +18,7 @@ class App extends Component {
     };
     this.handleHover = this.handleHover.bind(this);
   }
-  componentWillUpdate() {
-    this.setState({ state: this.state });
-  }
+
   componentDidMount() {
     const url = this.props.match.url;
 
@@ -31,7 +29,7 @@ class App extends Component {
     );
 
     console.log("this.props.match", this.props.match);
-    if (url === NET_CONFIG.root_dir) {
+    if (url === NET_CONFIG.root_dir || this.state.category === {}) {
       fetch(url)
         .then(res => res.json())
         .then(data => {
@@ -52,6 +50,7 @@ class App extends Component {
           console.log("data", data);
           if (data.gallery[0].image[0].fullpath !== null) {
             this.setState({
+              categories: {},
               images: data.gallery,
               backgroundChange:
                 NET_CONFIG.root_dir + data.gallery[0].image[0].fullpath
