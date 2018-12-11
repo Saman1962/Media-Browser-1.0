@@ -65,7 +65,6 @@ const ListItemsWithoutDescription = props => {
             onMoveNextRequest={props.onMoveNextRequest}
           />
         )}
-        <Route path="/:gallery/:category" component={App} />
       </div>
     </Router>
   );
