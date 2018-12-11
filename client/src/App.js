@@ -29,6 +29,7 @@ class App extends Component {
     );
 
     console.log("this.props.match", this.props.match);
+    console.log("this.state", this.state);
     if (url === NET_CONFIG.root_dir || this.state.category === {}) {
       fetch(url)
         .then(res => res.json())
