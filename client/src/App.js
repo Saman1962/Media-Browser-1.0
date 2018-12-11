@@ -95,16 +95,13 @@ class App extends Component {
       return (
         <div>
           <ChangeableBackground change={this.state.backgroundChange} />
-          <Header
-            subCategory={false}
-            match={this.props}
-            history={this.props.history}
-          />
+          <Header subCategory={false} match={this.props} />
           <ItemsContainer
             description={false}
             data={this.state.categories}
             handleHover={this.handleHover}
             match={this.props.match}
+            history={this.props.history}
           >
             <ItemAddContainer subCategory={true} handleHover={false} />
           </ItemsContainer>
@@ -117,17 +114,13 @@ class App extends Component {
       return (
         <div>
           <ChangeableBackground change={this.state.backgroundChange} />
-          <Header
-            subCategory={true}
-            sliced={sliced}
-            match={this.props}
-            history={this.props.history}
-          />
+          <Header subCategory={true} sliced={sliced} match={this.props} />
           <ItemsContainer
             description={true}
             data={images}
             handleHover={this.handleHover}
             match={this.props.match}
+            history={this.props.history}
           >
             <ItemAddContainer
               subCategory={false}

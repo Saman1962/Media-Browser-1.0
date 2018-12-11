@@ -24,7 +24,7 @@ class ItemsContainer extends React.Component {
   }
 
   render() {
-    const { handleHover, handleClick, match, data } = this.props;
+    const { handleHover, handleClick, match, data, history } = this.props;
     const { photoIndex, isOpen } = this.state;
     const itemDescription = num => {
       const item = Number.isInteger(num) ? num : "";
@@ -55,6 +55,7 @@ class ItemsContainer extends React.Component {
     } else {
       return (
         <ListItemsWithoutDescription
+          history={history}
           match={match}
           data={data}
           handleHover={handleHover}
