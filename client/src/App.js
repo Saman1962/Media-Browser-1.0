@@ -19,6 +19,7 @@ class App extends Component {
     this.handleHover = this.handleHover.bind(this);
   }
   componentDidMount() {
+    console.log("Did mOunt,", this.state);
     const url = this.props.match.url;
     this.setState({ state: this.state });
     console.log(url);
