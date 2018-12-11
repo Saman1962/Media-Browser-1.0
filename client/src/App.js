@@ -34,7 +34,7 @@ class App extends Component {
         .then(res => res.json())
         .then(data => {
           console.log("data", data);
-          console.log("this.state main", this.state);
+
           if (data.gallery[0].image[0].fullpath !== null) {
             this.setState({
               categories: data.gallery,
@@ -42,6 +42,7 @@ class App extends Component {
                 NET_CONFIG.root_dir + data.gallery[0].image[0].fullpath
             });
           }
+          console.log("this.state main", this.state);
         })
         .catch(err => console.log("Something bad happened", err));
     } else if (this.props.match.params.category) {
@@ -49,7 +50,7 @@ class App extends Component {
         .then(res => res.json())
         .then(data => {
           console.log("data", data);
-          console.log("this.state second", this.state);
+
           if (data.gallery[0].image[0].fullpath !== null) {
             this.setState({
               categories: {},
@@ -58,6 +59,7 @@ class App extends Component {
                 NET_CONFIG.root_dir + data.gallery[0].image[0].fullpath
             });
           }
+          console.log("this.state second", this.state);
         })
         .catch(err => console.log("Something bad happened", err));
     }
