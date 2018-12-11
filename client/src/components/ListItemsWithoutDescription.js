@@ -6,7 +6,7 @@ const ListItemsWithoutDescription = props => {
   const { photoIndex, match } = props;
   console.log(props);
   return (
-    <Router>
+    <Router forceRefresh={true}>
       <div className="container">
         <main>
           <div className="row no-gutters align-items-start text-center">
