@@ -13,8 +13,7 @@ class App extends Component {
     this.state = {
       categories: [],
       images: [],
-      backgroundChange: "",
-      match: ""
+      backgroundChange: ""
     };
     this.handleHover = this.handleHover.bind(this);
   }
@@ -35,6 +34,7 @@ class App extends Component {
         .then(res => res.json())
         .then(data => {
           console.log("data", data);
+          console.log("this.state main", this.state);
           if (data.gallery[0].image[0].fullpath !== null) {
             this.setState({
               categories: data.gallery,
@@ -49,6 +49,7 @@ class App extends Component {
         .then(res => res.json())
         .then(data => {
           console.log("data", data);
+          console.log("this.state second", this.state);
           if (data.gallery[0].image[0].fullpath !== null) {
             this.setState({
               categories: {},
@@ -60,7 +61,6 @@ class App extends Component {
         })
         .catch(err => console.log("Something bad happened", err));
     }
-    console.log("this.state", this.state);
   }
 
   handleHover(e) {
