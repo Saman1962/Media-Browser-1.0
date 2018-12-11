@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Link } from "react-router-dom";
 import IconBack from "../images/category__icon-back.svg";
 
 const Header = props => {
-  props.history.push("/gallery/");
   if (!props.subCategory) {
     return (
       <div className="container ">
