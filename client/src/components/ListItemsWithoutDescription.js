@@ -7,7 +7,7 @@ const ListItemsWithoutDescription = props => {
   const { photoIndex, match } = props;
   console.log(props);
   return (
-    
+    <Router>
       <div className="container">
         <main>
           <div className="row no-gutters align-items-start text-center">
@@ -66,7 +66,7 @@ const ListItemsWithoutDescription = props => {
           />
         )}
       </div>
-    
+    </Router>
   );
 };
 
