@@ -14,7 +14,7 @@ import "./css/main.css";
 ReactDOM.render(
   <Router forceRefresh={true}>
     <Switch>
-      <Route path="/:gallery/" component={App} />
+      <Route exact path="/:gallery" component={App} />
       <Route exact path="/:gallery/:category" component={App} />
       <Redirect from="*" to="/gallery/" />
     </Switch>
