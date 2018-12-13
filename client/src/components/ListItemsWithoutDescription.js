@@ -3,10 +3,16 @@ import { Link } from "react-router-dom";
 import Lightbox from "./Lightbox";
 
 class ListItemsWithoutDescription extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      fake: false
+    };
+  }
   componentDidUpdate(prevProps) {
     if (prevProps.match.url !== this.props.match.url) {
-      console.log("robim daco");
-      this.forceUpdate();
+      console.log("robim state");
+      this.setState({ fake: true });
     }
   }
   render() {
