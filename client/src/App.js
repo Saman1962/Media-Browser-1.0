@@ -92,7 +92,7 @@ class App extends Component {
     }
     let sliced = this.props.match.params.category;
     if (images.length === 0 && this.state.categories.length !== 0) {
-      return (
+      return (<Router forceRefresh={true}>
         <div>
           <ChangeableBackground change={this.state.backgroundChange} />
           <Header subCategory={false} match={this.props} />
@@ -106,11 +106,13 @@ class App extends Component {
           </ItemsContainer>
           <Footer />
         </div>
+        </Router>
       );
     } else if (!this.state.categories && !this.state.images) {
       return <ItemAddContainer subCategory={true} match={this.props.match} />;
     } else {
       return (
+        <Router forceRefresh={true}>
         <div>
           <ChangeableBackground change={this.state.backgroundChange} />
           <Header subCategory={true} sliced={sliced} match={this.props} />
@@ -128,6 +130,7 @@ class App extends Component {
           </ItemsContainer>
           <Footer />
         </div>
+        </Router>
       );
     }
   }

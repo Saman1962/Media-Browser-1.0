@@ -5,7 +5,7 @@ import Lightbox from "./Lightbox";
 class ListItemsWithoutDescription extends Component {
   render() {
     const { photoIndex, match } = this.props;
-    console.log("List", this.props);
+    console.log("ListItems", this.props);
     return (
       <div className="container">
         <main>
