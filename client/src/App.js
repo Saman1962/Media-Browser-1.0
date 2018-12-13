@@ -6,7 +6,7 @@ import ItemsContainer from "./containers/ItemsContainer";
 import ItemAddContainer from "./containers/ItemAddContainer";
 import Footer from "./components/Footer";
 import NET_CONFIG from "./paths";
-import { withRouter } from "react-router-dom";
+import { withRouter } from "react-router";
 class App extends Component {
   constructor(props) {
     super(props);
