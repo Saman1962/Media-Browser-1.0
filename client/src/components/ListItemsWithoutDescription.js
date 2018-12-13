@@ -3,6 +3,12 @@ import { Link } from "react-router-dom";
 import Lightbox from "./Lightbox";
 
 class ListItemsWithoutDescription extends Component {
+  static getDerivedStateFromProps(nextProps) {
+    if (this.props.match.url !== nextProps.match.url) {
+      this.forceUpdate();
+      console.log("ForceUpdate");
+    }
+  }
   render() {
     const { photoIndex, match } = this.props;
     console.log("ListItems", this.props);

@@ -6,7 +6,7 @@ import ItemsContainer from "./containers/ItemsContainer";
 import ItemAddContainer from "./containers/ItemAddContainer";
 import Footer from "./components/Footer";
 import NET_CONFIG from "./paths";
-import { withRouter } from "react-router";
+import { withRouter, Router } from "react-router";
 class App extends Component {
   constructor(props) {
     super(props);
@@ -92,45 +92,46 @@ class App extends Component {
     }
     let sliced = this.props.match.params.category;
     if (images.length === 0 && this.state.categories.length !== 0) {
-      return (<Router forceRefresh={true}>
-        <div>
-          <ChangeableBackground change={this.state.backgroundChange} />
-          <Header subCategory={false} match={this.props} />
-          <ItemsContainer
-            description={false}
-            data={this.state.categories}
-            handleHover={this.handleHover}
-            match={this.props.match}
-          >
-            <ItemAddContainer subCategory={true} handleHover={false} />
-          </ItemsContainer>
-          <Footer />
-        </div>
-        </Router>
+      return (
+       
+          <div>
+            <ChangeableBackground change={this.state.backgroundChange} />
+            <Header subCategory={false} match={this.props} />
+            <ItemsContainer
+              description={false}
+              data={this.state.categories}
+              handleHover={this.handleHover}
+              match={this.props.match}
+            >
+              <ItemAddContainer subCategory={true} handleHover={false} />
+            </ItemsContainer>
+            <Footer />
+          </div>
+        
       );
     } else if (!this.state.categories && !this.state.images) {
       return <ItemAddContainer subCategory={true} match={this.props.match} />;
     } else {
       return (
-        <Router forceRefresh={true}>
-        <div>
-          <ChangeableBackground change={this.state.backgroundChange} />
-          <Header subCategory={true} sliced={sliced} match={this.props} />
-          <ItemsContainer
-            description={true}
-            data={images}
-            handleHover={this.handleHover}
-            match={this.props.match}
-          >
-            <ItemAddContainer
-              subCategory={false}
-              data={this.state}
-              handleHover={false}
-            />
-          </ItemsContainer>
-          <Footer />
-        </div>
-        </Router>
+   
+          <div>
+            <ChangeableBackground change={this.state.backgroundChange} />
+            <Header subCategory={true} sliced={sliced} match={this.props} />
+            <ItemsContainer
+              description={true}
+              data={images}
+              handleHover={this.handleHover}
+              match={this.props.match}
+            >
+              <ItemAddContainer
+                subCategory={false}
+                data={this.state}
+                handleHover={false}
+              />
+            </ItemsContainer>
+            <Footer />
+          </div>
+        
       );
     }
   }
