@@ -19,13 +19,6 @@ class App extends Component {
     this.handleHover = this.handleHover.bind(this);
     this.refresh = this.refresh.bind(this);
   }
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.match.url !== this.props.match.url) {
-      console.log("componentWillReceiveProps", nextProps);
-      this.setState({ refresh: true });
-      this.forceUpdate();
-    }
-  }
 
   handleHover(e) {
     e.persist();
