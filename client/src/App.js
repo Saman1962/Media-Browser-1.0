@@ -19,7 +19,12 @@ class App extends Component {
     this.handleHover = this.handleHover.bind(this);
     this.refresh = this.refresh.bind(this);
   }
-
+  componentDidUpdate(prevState) {
+    if (prevState.refresh !== this.state.refresh) {
+      console.log("componentDidUpdate", this.state.refresh);
+      return true;
+    }
+  }
   componentDidMount() {
     const url = this.props.match.url;
 
