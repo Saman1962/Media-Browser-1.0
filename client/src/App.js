@@ -6,10 +6,10 @@ import ItemsContainer from "./containers/ItemsContainer";
 import ItemAddContainer from "./containers/ItemAddContainer";
 import Footer from "./components/Footer";
 import NET_CONFIG from "./paths";
-import { withRouter, Router } from "react-router";
+import { withRouter } from "react-router";
 class App extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       categories: [],
       images: [],
@@ -23,7 +23,7 @@ class App extends Component {
   componentDidMount() {
     const url = this.props.match.url;
 
-    console.log(this.state.refresh);
+    console.log("State REFRESH", this.state.refresh);
 
     if (url === NET_CONFIG.root_dir || this.state.category === {}) {
       fetch(url)
@@ -79,8 +79,10 @@ class App extends Component {
       });
     }
   }
-  refresh() {
-    this.setState({ refresh: true });
+  refresh(param) {
+    if (param !== undefined) {
+      this.setState({ refresh: param });
+    }
   }
   render() {
     let images = this.state.images;
