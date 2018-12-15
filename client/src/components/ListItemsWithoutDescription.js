@@ -5,8 +5,8 @@ import Lightbox from "./Lightbox";
 class ListItemsWithoutDescription extends Component {
   componentDidUpdate(prevProps) {
     if (prevProps.match.url !== this.props.match.url) {
-      console.log("robim refresh");
-      console.log(this.props.refresh);
+      console.log("robim refresh2");
+      this.props.refresh();
     }
   }
   render() {
