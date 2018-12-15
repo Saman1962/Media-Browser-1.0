@@ -13,15 +13,15 @@ class App extends Component {
     this.state = {
       categories: [],
       images: [],
-      backgroundChange: "",
-      refresh: false
+      backgroundChange: ""
     };
     this.handleHover = this.handleHover.bind(this);
     this.refresh = this.refresh.bind(this);
   }
-  componentWillReceiveProps() {
-    console.log("componentWillReceiveProps");
-    this.setState({ refresh: true });
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.match.url !== this.props.match.url) {
+      console.log("componentWillReceiveProps", nextProps);
+    }
   }
   componentDidMount() {
     const url = this.props.match.url;
@@ -123,7 +123,6 @@ class App extends Component {
             data={images}
             handleHover={this.handleHover}
             match={this.props.match}
-            refresh={this.refresh}
           >
             <ItemAddContainer
               subCategory={false}

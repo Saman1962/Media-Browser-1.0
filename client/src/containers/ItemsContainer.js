@@ -24,7 +24,7 @@ class ItemsContainer extends React.Component {
   }
 
   render() {
-    const { handleHover, handleClick, refresh, match, data } = this.props;
+    const { handleHover, handleClick, match, data } = this.props;
     const { photoIndex, isOpen } = this.state;
     const itemDescription = num => {
       const item = Number.isInteger(num) ? num : "";
@@ -62,7 +62,6 @@ class ItemsContainer extends React.Component {
           handleIdx={this.handleIdx}
           handleOpen={this.handleOpen}
           photoIndex={photoIndex}
-          refresh={refresh}
           isOpen={isOpen}
           onMovePrevRequest={() =>
             this.setState({

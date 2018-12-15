@@ -3,18 +3,7 @@ import { Link } from "react-router-dom";
 import Lightbox from "./Lightbox";
 
 class ListItemsWithoutDescription extends Component {
-  componentDidUpdate(prevProps) {
-    if (prevProps.match.url !== this.props.match.url) {
-      console.log("robim refresh");
-      if (this.props.refresh === undefined) {
-        return false;
-      }
-      this.props.refresh();
-      console.log(this.props.refresh);
-      console.log("componentDidUpdate");
-      return false;
-    }
-  }
+  
   render() {
     const { photoIndex, match } = this.props;
     console.log("ListItems", this.props);
