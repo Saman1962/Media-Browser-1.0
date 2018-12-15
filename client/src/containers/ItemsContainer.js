@@ -39,10 +39,11 @@ class ItemsContainer extends React.Component {
           return item + " fotiek";
       }
     };
-    if (!this.props.description) {
+    if (!this.props.description && this.props.location.key !== undefined) {
       return (
         <div>
           <ListItemsWithDescription
+            key={this.props.location.key}
             data={this.props.data}
             handleHover={handleHover}
             handleClick={handleClick}
@@ -55,6 +56,7 @@ class ItemsContainer extends React.Component {
     } else {
       return (
         <ListItemsWithoutDescription
+          key={this.props.location.key}
           match={match}
           data={data}
           handleHover={handleHover}
