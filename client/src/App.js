@@ -20,6 +20,47 @@ class App extends Component {
     this.refresh = this.refresh.bind(this);
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.match.url !== prevProps.match.url) {
+      const url = this.props.match.url;
+      console.log("Refresh", this.state.refresh);
+      if (url === NET_CONFIG.root_dir || this.state.category === {}) {
+        fetch(url)
+          .then(res => res.json())
+          .then(data => {
+            console.log("data", data);
+
+            if (data.gallery[0].image[0].fullpath !== null) {
+              this.setState({
+                categories: data.gallery,
+                backgroundChange:
+                  NET_CONFIG.root_dir + data.gallery[0].image[0].fullpath
+              });
+            }
+          })
+          .then(() => console.log("this.state main", this.state))
+          .catch(err => console.log("Something bad happened", err));
+      } else if (this.props.match.params.category) {
+        fetch(this.props.match.params.category)
+          .then(res => res.json())
+          .then(data => {
+            console.log("data", data);
+
+            if (data.gallery[0].image[0].fullpath !== null) {
+              this.setState({
+                categories: {},
+                images: data.gallery,
+                backgroundChange:
+                  NET_CONFIG.root_dir + data.gallery[0].image[0].fullpath
+              });
+            }
+          })
+          .then(() => console.log("this.state second", this.state))
+          .catch(err => console.log("Something bad happened", err));
+      }
+    }
+  }
+
   handleHover(e) {
     e.persist();
     let nameOfPicture;
@@ -42,42 +83,6 @@ class App extends Component {
     this.setState({ refresh: true });
   }
   render() {
-    const url = this.props.match.url;
-    console.log("Refresh", this.state.refresh);
-    if (url === NET_CONFIG.root_dir || this.state.category === {}) {
-      fetch(url)
-        .then(res => res.json())
-        .then(data => {
-          console.log("data", data);
-
-          if (data.gallery[0].image[0].fullpath !== null) {
-            this.setState({
-              categories: data.gallery,
-              backgroundChange:
-                NET_CONFIG.root_dir + data.gallery[0].image[0].fullpath
-            });
-          }
-        })
-        .then(() => console.log("this.state main", this.state))
-        .catch(err => console.log("Something bad happened", err));
-    } else if (this.props.match.params.category) {
-      fetch(this.props.match.params.category)
-        .then(res => res.json())
-        .then(data => {
-          console.log("data", data);
-
-          if (data.gallery[0].image[0].fullpath !== null) {
-            this.setState({
-              categories: {},
-              images: data.gallery,
-              backgroundChange:
-                NET_CONFIG.root_dir + data.gallery[0].image[0].fullpath
-            });
-          }
-        })
-        .then(() => console.log("this.state second", this.state))
-        .catch(err => console.log("Something bad happened", err));
-    }
     let images = this.state.images;
     if (
       images === undefined ||
