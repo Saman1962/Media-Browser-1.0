@@ -22,7 +22,7 @@ class App extends Component {
   componentDidUpdate(prevState) {
     if (prevState.refresh !== this.state.refresh) {
       console.log("componentDidUpdate", this.state.refresh);
-      return true;
+      this.forceUpdate();
     }
   }
   componentDidMount() {
