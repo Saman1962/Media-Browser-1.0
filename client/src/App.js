@@ -26,7 +26,6 @@ class App extends Component {
       this.forceUpdate();
     }
   }
-  componentDidMount() {}
 
   handleHover(e) {
     e.persist();
@@ -86,7 +85,6 @@ class App extends Component {
         .then(() => console.log("this.state second", this.state))
         .catch(err => console.log("Something bad happened", err));
     }
-
     let images = this.state.images;
     if (
       images === undefined ||
