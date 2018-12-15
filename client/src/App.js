@@ -79,10 +79,8 @@ class App extends Component {
       });
     }
   }
-  refresh(param) {
-    if (param !== undefined) {
-      this.setState({ refresh: param });
-    }
+  refresh() {
+    this.setState({ refresh: true });
   }
   render() {
     let images = this.state.images;
