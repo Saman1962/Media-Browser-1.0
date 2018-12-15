@@ -20,7 +20,7 @@ class App extends Component {
     this.refresh = this.refresh.bind(this);
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidMount() {
     if (this.props.match.url !== prevProps.match.url) {
       const url = this.props.match.url;
       console.log("Refresh", this.state.refresh);
@@ -60,7 +60,7 @@ class App extends Component {
       }
     }
   }
-
+  componentWillUnmount() {}
   handleHover(e) {
     e.persist();
     let nameOfPicture;
