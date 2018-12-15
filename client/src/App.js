@@ -19,10 +19,11 @@ class App extends Component {
     this.handleHover = this.handleHover.bind(this);
     this.refresh = this.refresh.bind(this);
   }
-  componentDidUpdate(prevState) {
-    if (prevState.refresh !== this.state.refresh) {
-      console.log("componentDidUpdate", this.state.refresh);
+  shouldComponentUpdate(nextState) {
+    if (nextState.refresh !== this.state.refresh) {
+      console.log("shouldComponentUpdate", this.state.refresh);
       this.forceUpdate();
+      return true;
     }
   }
   componentDidMount() {

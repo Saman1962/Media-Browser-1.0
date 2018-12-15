@@ -11,6 +11,7 @@ class ListItemsWithoutDescription extends Component {
       }
       this.props.refresh();
       console.log(this.props.refresh);
+      console.log("componentDidUpdate");
       return true;
     }
   }
