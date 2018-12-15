@@ -85,12 +85,17 @@ class App extends Component {
       return false;
     }
     let sliced = this.props.match.params.category;
-    if (images.length === 0 && this.state.categories.length !== 0) {
+    if (
+      images.length === 0 &&
+      this.state.categories.length !== 0 &&
+      this.props.location.key !== undefined
+    ) {
       return (
         <div>
           <ChangeableBackground change={this.state.backgroundChange} />
           <Header subCategory={false} match={this.props} />
           <ItemsContainer
+            key={this.props.location.key}
             description={false}
             data={this.state.categories}
             handleHover={this.handleHover}
@@ -101,7 +106,11 @@ class App extends Component {
           <Footer />
         </div>
       );
-    } else if (!this.state.categories && !this.state.images) {
+    } else if (
+      !this.state.categories &&
+      !this.state.images &&
+      this.props.location.key !== undefined
+    ) {
       return <ItemAddContainer subCategory={true} match={this.props.match} />;
     } else {
       return (
@@ -109,6 +118,7 @@ class App extends Component {
           <ChangeableBackground change={this.state.backgroundChange} />
           <Header subCategory={true} sliced={sliced} match={this.props} />
           <ItemsContainer
+            key={this.props.location.key}
             description={true}
             data={images}
             handleHover={this.handleHover}
