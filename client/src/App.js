@@ -20,9 +20,10 @@ class App extends Component {
     this.refresh = this.refresh.bind(this);
   }
   componentWillReceiveProps() {
+    console.log("componentWillReceiveProps");
     this.setState({ refresh: true });
   }
-  componentWillMount() {
+  componentDidMount() {
     const url = this.props.match.url;
 
     console.log("State REFRESH", this.state.refresh);
