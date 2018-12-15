@@ -13,9 +13,11 @@ class App extends Component {
     this.state = {
       categories: [],
       images: [],
-      backgroundChange: ""
+      backgroundChange: "",
+      refresh: false
     };
     this.handleHover = this.handleHover.bind(this);
+    this.refresh = this.refresh.bind(this);
   }
 
   componentDidMount() {
@@ -80,7 +82,9 @@ class App extends Component {
       });
     }
   }
-
+  refresh() {
+    this.setState({ refresh: true });
+  }
   render() {
     let images = this.state.images;
     if (
@@ -93,45 +97,42 @@ class App extends Component {
     let sliced = this.props.match.params.category;
     if (images.length === 0 && this.state.categories.length !== 0) {
       return (
-       
-          <div>
-            <ChangeableBackground change={this.state.backgroundChange} />
-            <Header subCategory={false} match={this.props} />
-            <ItemsContainer
-              description={false}
-              data={this.state.categories}
-              handleHover={this.handleHover}
-              match={this.props.match}
-            >
-              <ItemAddContainer subCategory={true} handleHover={false} />
-            </ItemsContainer>
-            <Footer />
-          </div>
-        
+        <div>
+          <ChangeableBackground change={this.state.backgroundChange} />
+          <Header subCategory={false} match={this.props} />
+          <ItemsContainer
+            description={false}
+            data={this.state.categories}
+            handleHover={this.handleHover}
+            match={this.props.match}
+          >
+            <ItemAddContainer subCategory={true} handleHover={false} />
+          </ItemsContainer>
+          <Footer />
+        </div>
       );
     } else if (!this.state.categories && !this.state.images) {
       return <ItemAddContainer subCategory={true} match={this.props.match} />;
     } else {
       return (
-   
-          <div>
-            <ChangeableBackground change={this.state.backgroundChange} />
-            <Header subCategory={true} sliced={sliced} match={this.props} />
-            <ItemsContainer
-              description={true}
-              data={images}
-              handleHover={this.handleHover}
-              match={this.props.match}
-            >
-              <ItemAddContainer
-                subCategory={false}
-                data={this.state}
-                handleHover={false}
-              />
-            </ItemsContainer>
-            <Footer />
-          </div>
-        
+        <div>
+          <ChangeableBackground change={this.state.backgroundChange} />
+          <Header subCategory={true} sliced={sliced} match={this.props} />
+          <ItemsContainer
+            description={true}
+            data={images}
+            handleHover={this.handleHover}
+            match={this.props.match}
+            refresh={this.refresh}
+          >
+            <ItemAddContainer
+              subCategory={false}
+              data={this.state}
+              handleHover={false}
+            />
+          </ItemsContainer>
+          <Footer />
+        </div>
       );
     }
   }

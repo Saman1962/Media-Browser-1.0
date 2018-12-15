@@ -62,6 +62,7 @@ class ItemsContainer extends React.Component {
           handleIdx={this.handleIdx}
           handleOpen={this.handleOpen}
           photoIndex={photoIndex}
+          refresh={this.refresh}
           isOpen={isOpen}
           onMovePrevRequest={() =>
             this.setState({
