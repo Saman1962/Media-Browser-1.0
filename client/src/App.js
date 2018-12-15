@@ -20,7 +20,6 @@ class App extends Component {
 
   componentDidMount() {
     const url = this.props.match.url;
-    console.log("Refresh", this.state.refresh);
     if (url === NET_CONFIG.root_dir || this.state.category === {}) {
       fetch(url)
         .then(res => res.json())
@@ -56,9 +55,6 @@ class App extends Component {
         .catch(err => console.log("Something bad happened", err));
     }
   }
-  componentWillUnmount() {
-    console.log("Unmount");
-  }
   handleHover(e) {
     e.persist();
     let nameOfPicture;
@@ -79,6 +75,7 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.props);
     let images = this.state.images;
     if (
       images === undefined ||
