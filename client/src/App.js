@@ -102,7 +102,6 @@ class App extends Component {
           <ChangeableBackground change={this.state.backgroundChange} />
           <Header subCategory={false} match={this.props} />
           <ItemsContainer
-            key={this.props.location.key}
             description={false}
             data={this.state.categories}
             handleHover={this.handleHover}
@@ -121,7 +120,6 @@ class App extends Component {
           <ChangeableBackground change={this.state.backgroundChange} />
           <Header subCategory={true} sliced={sliced} match={this.props} />
           <ItemsContainer
-            key={this.props.location.key}
             description={true}
             data={images}
             handleHover={this.handleHover}
