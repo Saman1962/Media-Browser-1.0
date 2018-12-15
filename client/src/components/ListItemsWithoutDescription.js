@@ -6,7 +6,7 @@ class ListItemsWithoutDescription extends Component {
   componentDidUpdate(prevProps) {
     if (prevProps.match.url !== this.props.match.url) {
       console.log("robim refresh");
-      if (this.props.refresh !== undefined) {
+      if (this.props.refresh === undefined) {
         return false;
       }
       this.props.refresh();
