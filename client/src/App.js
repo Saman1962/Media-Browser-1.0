@@ -23,10 +23,7 @@ class App extends Component {
   componentDidMount() {
     const url = this.props.match.url;
 
-    console.log(url);
-    console.log("this.props", this.props);
-
-    console.log("this.props.match", this.props.match);
+    console.log(this.state.refresh);
 
     if (url === NET_CONFIG.root_dir || this.state.category === {}) {
       fetch(url)
