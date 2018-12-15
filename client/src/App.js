@@ -26,7 +26,30 @@ class App extends Component {
       this.forceUpdate();
     }
   }
-  componentDidMount() {
+  componentDidMount() {}
+
+  handleHover(e) {
+    e.persist();
+    let nameOfPicture;
+    if (this.props.images === undefined) {
+      if (e.target.getAttribute("src") !== null) {
+        nameOfPicture = e.target.getAttribute("src");
+      } else {
+        return "";
+      }
+    } else {
+      nameOfPicture = this.props.images[0].fullpath;
+    }
+    if (nameOfPicture !== undefined) {
+      this.setState({
+        backgroundChange: nameOfPicture
+      });
+    }
+  }
+  refresh() {
+    this.setState({ refresh: true });
+  }
+  render() {
     const url = this.props.match.url;
     console.log("Refresh", this.state.refresh);
     if (url === NET_CONFIG.root_dir || this.state.category === {}) {
@@ -63,30 +86,7 @@ class App extends Component {
         .then(() => console.log("this.state second", this.state))
         .catch(err => console.log("Something bad happened", err));
     }
-  }
 
-  handleHover(e) {
-    e.persist();
-    let nameOfPicture;
-    if (this.props.images === undefined) {
-      if (e.target.getAttribute("src") !== null) {
-        nameOfPicture = e.target.getAttribute("src");
-      } else {
-        return "";
-      }
-    } else {
-      nameOfPicture = this.props.images[0].fullpath;
-    }
-    if (nameOfPicture !== undefined) {
-      this.setState({
-        backgroundChange: nameOfPicture
-      });
-    }
-  }
-  refresh() {
-    this.setState({ refresh: true });
-  }
-  render() {
     let images = this.state.images;
     if (
       images === undefined ||
