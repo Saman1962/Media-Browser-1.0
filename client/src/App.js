@@ -13,11 +13,9 @@ class App extends Component {
     this.state = {
       categories: [],
       images: [],
-      backgroundChange: "",
-      refresh: false
+      backgroundChange: ""
     };
     this.handleHover = this.handleHover.bind(this);
-    this.refresh = this.refresh.bind(this);
   }
 
   componentDidMount() {
@@ -58,7 +56,9 @@ class App extends Component {
         .catch(err => console.log("Something bad happened", err));
     }
   }
-  componentWillUnmount() {}
+  componentWillUnmount() {
+    console.log("Unmount");
+  }
   handleHover(e) {
     e.persist();
     let nameOfPicture;
@@ -77,9 +77,7 @@ class App extends Component {
       });
     }
   }
-  refresh() {
-    this.setState({ refresh: true });
-  }
+
   render() {
     let images = this.state.images;
     if (
