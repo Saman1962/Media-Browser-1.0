@@ -13,7 +13,8 @@ class App extends Component {
     this.state = {
       categories: [],
       images: [],
-      backgroundChange: ""
+      backgroundChange: "",
+      refresh: false
     };
     this.handleHover = this.handleHover.bind(this);
     this.refresh = this.refresh.bind(this);
@@ -21,12 +22,12 @@ class App extends Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.match.url !== this.props.match.url) {
       console.log("componentWillReceiveProps", nextProps);
+      this.setState({ refresh: true });
+      this.forceUpdate();
     }
   }
   componentDidMount() {
     const url = this.props.match.url;
-
-    console.log("State REFRESH", this.state.refresh);
 
     if (url === NET_CONFIG.root_dir || this.state.category === {}) {
       fetch(url)
