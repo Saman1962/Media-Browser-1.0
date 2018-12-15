@@ -28,7 +28,7 @@ class App extends Component {
   }
   componentDidMount() {
     const url = this.props.match.url;
-
+    console.log("Refresh", this.state.refresh);
     if (url === NET_CONFIG.root_dir || this.state.category === {}) {
       fetch(url)
         .then(res => res.json())
@@ -102,6 +102,7 @@ class App extends Component {
           <ChangeableBackground change={this.state.backgroundChange} />
           <Header subCategory={false} match={this.props} />
           <ItemsContainer
+            key={this.props.location.key}
             description={false}
             data={this.state.categories}
             handleHover={this.handleHover}
@@ -120,6 +121,7 @@ class App extends Component {
           <ChangeableBackground change={this.state.backgroundChange} />
           <Header subCategory={true} sliced={sliced} match={this.props} />
           <ItemsContainer
+            key={this.props.location.key}
             description={true}
             data={images}
             handleHover={this.handleHover}
