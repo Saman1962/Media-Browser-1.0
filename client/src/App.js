@@ -23,6 +23,7 @@ class App extends Component {
       this.forceUpdate();
       return true;
     }
+    return true;
   }
   componentDidMount() {
     const url = this.props.match.url;
