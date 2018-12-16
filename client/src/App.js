@@ -19,8 +19,9 @@ class App extends Component {
   }
   shouldComponentUpdate(nextProps) {
     if (nextProps.match.url !== this.props.match.url) {
-      console.log("ComponentUpdate");
-      this.setState({});
+      console.log("ComponentShould");
+      this.forceUpdate();
+      return true;
     }
   }
   componentDidMount() {
