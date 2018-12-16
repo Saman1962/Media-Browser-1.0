@@ -17,7 +17,12 @@ class App extends Component {
     };
     this.handleHover = this.handleHover.bind(this);
   }
-
+  componentDidUpdate(prevProps) {
+    if (prevProps.match.url !== this.props.match.url) {
+      console.log("ComponentUpdate");
+      this.forceUpdate();
+    }
+  }
   componentDidMount() {
     const url = this.props.match.url;
     if (url === NET_CONFIG.root_dir || this.state.category === {}) {
