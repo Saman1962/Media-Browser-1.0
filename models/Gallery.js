@@ -1,31 +1,33 @@
-const mongoose = new require('mongoose');
+const mongoose = new require("mongoose");
 const Schema = mongoose.Schema;
 
 let GallerySchema = new Schema(
   {
+    name: String,
+    path: String,
     images: {
       type: Array,
       properties: {
         type: Object,
         properties: {
-          path: {type: String},
-          name: {type: String},
+          path: { type: String },
+          name: { type: String },
           image: {
             type: Object,
             properties: {
-              path: {type: String},
-              fullpath: {type: String},
-              name: {type: String},
-              modified: {type: Date, default: Date.now()},
-            },
+              path: { type: String },
+              fullpath: { type: String },
+              name: { type: String },
+              modified: { type: Date, default: Date.now() }
+            }
             /*required: ["path", "fullpath", "name", "modified"]*/
-          },
-        },
+          }
+        }
         /*required: ["path", "name"]*/
-      },
-    },
+      }
+    }
   },
-  {collection: 'galleries'},
+  { collection: "galleries" }
 );
 
-module.exports = mongoose.model('Gallery', GallerySchema);
+module.exports = mongoose.model("Gallery", GallerySchema);

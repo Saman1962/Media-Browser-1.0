@@ -13,7 +13,7 @@ const MoveArrowContainer = props => {
           aria-label="Previous image"
         >
           <Link
-            to={"/gallery/" + props.prevSrc}
+            to={{ pathname: "/gallery/" + props.prevSrc }}
             onClick={() => {
               props.onMovePrevRequest();
             }}
@@ -28,7 +28,7 @@ const MoveArrowContainer = props => {
           aria-label="Next image"
         >
           <Link
-            to={"/gallery/" + props.nextSrc}
+            to={{ pathname: "/gallery/" + props.nextSrc }}
             onClick={() => {
               props.onMoveNextRequest();
             }}

@@ -1,7 +1,8 @@
 import React from "react";
-import { BrowserRouter as Router, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import EmptyCategory from "./EmptyCategory";
 const ListItemsWithDescription = props => {
+  console.log("ListDesc", props);
   return (
     <div className="container">
       <main>
@@ -17,16 +18,14 @@ const ListItemsWithDescription = props => {
                 >
                   <Link
                     className="d-block item__link"
-                    to={process.env.PUBLIC_URL + "/gallery/" + item.name}
+                    to={{
+                      pathname: props.match.url + "/" + item.name
+                    }}
                   >
                     <figure>
                       <img
                         className="figure-img rounded"
-                        src={
-                          process.env.PUBLIC_URL +
-                          "/gallery/" +
-                          item.image[0].fullpath
-                        }
+                        src={"/gallery/" + item.image[0].fullpath}
                         alt=""
                       />
                       <figcaption className="figure-caption mt-2">
@@ -40,7 +39,7 @@ const ListItemsWithDescription = props => {
                 </div>
               );
             } else {
-              return <EmptyCategory idx={idx} path={item.path} />;
+              return <EmptyCategory idx={idx} category={item.name} />;
             }
           })}
           {props.children}

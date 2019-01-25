@@ -15,12 +15,15 @@ const classes = type => {
 };
 
 const ButtonClose = props => {
+  console.log("ButtonCLose", props);
   return (
     <button type="button" className={classes(props.type)} aria-label="Close">
       <Link
-        to={props.match === undefined ? "/gallery/" : props.match.url}
+        to={{ pathname: "/gallery" }}
         className="d-flex"
-        onClick={() => this.closeModal()}
+        onClick={() => {
+          this.closeModal();
+        }}
       >
         <img src={Icon} className="w-50 mr-3" alt="Close" />
         <span className="text-uppercase btn__close--text" aria-hidden="true">

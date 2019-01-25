@@ -1,0 +1,11 @@
+version: "3"
+services:
+  app:
+    container_name: zadanie-bart
+    image: bartenterprise/bart:zadanie
+    restart: always
+    build: .
+    command: npm run dev
+    ports:
+      - "3000:3000"
+      - "5000:5000"

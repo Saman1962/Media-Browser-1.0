@@ -9,14 +9,13 @@ import IconPhoto from "../images/add-photo-icon.svg";
 import IconCategory from "../images/add-category-plus-symbol.svg";
 
 const ItemAdd = props => {
+  console.log("ItemAdd", props);
   return (
-    <div className="item col-3  text-uppercase mr-lg-3 mr-sm-5 offset-xl-1">
-      <Router forceRefresh={false}>
+    <Router forceRefresh={false}>
+      <div className="item col-3  text-uppercase mr-lg-3 mr-sm-5 offset-xl-1">
         <Link
           className="d-block item__link"
-          to={
-            props.type === "photo" ? "/gallery/" + props.category : "/gallery/"
-          }
+          to={props.type === "photo" ? props.match.url : "/gallery/"}
           onClick={() => {
             props.openModal();
           }}
@@ -28,20 +27,20 @@ const ItemAdd = props => {
           />
           <h4 className="item__add--text">{props.text}</h4>
         </Link>
-      </Router>
 
-      <Modal
-        isOpen={props.state.showModal}
-        onLoad={props.openModal}
-        ariaHideApp={true}
-        contentLabel={props.text}
-        overlayClassName="overlay"
-        className="row  no-gutters  h-100 justify-content-center "
-      >
-        {props.type === "photo" && <PhotoAddContainer match={props.match} />}
-        {props.type === "category" && <CategoryAddContainer />}
-      </Modal>
-    </div>
+        <Modal
+          isOpen={props.state.showModal}
+          onLoad={props.openModal}
+          ariaHideApp={true}
+          contentLabel={props.text}
+          overlayClassName="overlay"
+          className="row  no-gutters  h-100 justify-content-center "
+        >
+          {props.type === "photo" && <PhotoAddContainer match={props.match} />}
+          {props.type === "category" && <CategoryAddContainer />}
+        </Modal>
+      </div>
+    </Router>
   );
 };
 

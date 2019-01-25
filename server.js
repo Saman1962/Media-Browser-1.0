@@ -9,6 +9,19 @@ const cors = require("cors");
 const fse = require("fs-extra");
 const app = express();
 
+const SAVE_FOLDER = "./client/public/gallery/";
+const TEMP_FOLDER = "./tmp/";
+
+/* CLOUDINARY */
+const cloudinary = require("cloudinary");
+cloudinary.config({
+  cloud_name: "hwufzokcm",
+  api_key: "288932539234295",
+  api_secret: "5TpkJkypREnBDMj4Y9--sj0x4Aw"
+});
+
+/* END */
+
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -24,7 +37,7 @@ const db = require("./paths").mongoURI;
 
 const storageOptions = multer.diskStorage({
   destination: (req, file, cb) => {
-    return cb(null, FOLDER_PATHS.temp);
+    return cb(null, "./tmp/");
   },
   filename: (req, file, cb) => {
     return cb(null, file.originalname);
@@ -39,23 +52,23 @@ mongoose
   .then(() => console.log("MongoDB Connected..."))
   .catch(err => console.log(err));
 
-app.get("/gallery", (req, res) => {
-  Gallery.find({}, { name: 1, path: 1, _id: 0, image: 1 }).then(
-    gallery => {
-      res.json({ gallery });
-    },
-    e => {
-      res
-        .status(500)
-        .send(e)
-        .send("Undefined error");
-    }
-  );
-});
+app.get(
+  "/gallery",
+  (req, res) => {
+    Gallery.find({}, { name: 1, path: 1, _id: 0, image: 1 }).then(gallery => {
+      res.json({ gallery: gallery });
+    });
+  },
+  e => {
+    res
+      .status(500)
+      .send(e)
+      .send("Undefined error");
+  }
+);
 
 app.get("/gallery/:path", (req, res) => {
   let path = decodeURIComponent(req.params.path);
-
   Gallery.find({ path: path }, { _id: 0 })
     .then(gallery => {
       console.log(gallery);
@@ -118,6 +131,10 @@ app.post("/gallery", text, (req, res) => {
       .charAt(1)
       .toUpperCase() + nameObj.name.slice(1);
 
+  Gallery.findOne({ name: name }).then(a => {
+    if (a !== null) return false;
+  });
+
   let gallery = new Gallery({
     name: name,
     path: name,
@@ -126,7 +143,7 @@ app.post("/gallery", text, (req, res) => {
 
   try {
     fse
-      .ensureDir("./gallery/" + name)
+      .ensureDir(TEMP_FOLDER + name)
       .then(() => {
         console.log("success!");
       })
@@ -156,10 +173,11 @@ app.post("/gallery", text, (req, res) => {
     }
   );
 });
+
 const upload = multer({
   storage: storageOptions,
   fileFilter: (req, file, callback) => {
-    const ext = path.extname(file.originalname);
+    const ext = path.extname(file.originalname).toLowerCase();
     if (ext !== ".png" && ext !== ".jpg" && ext !== ".gif" && ext !== ".jpeg") {
       return callback(new Error("Iba obrázky sú dovolené"));
     }
@@ -169,8 +187,8 @@ const upload = multer({
     fileSize: 1024 * 1024
   }
 });
-app.post("/gallery/:picture", upload.any(), (req, res) => {
-  let picture = decodeURI(req.params.picture);
+app.post("/gallery/:category", upload.any(), (req, res) => {
+  let category = decodeURI(req.params.category);
   let path;
 
   if (req.files.length < 1) {
@@ -179,23 +197,23 @@ app.post("/gallery/:picture", upload.any(), (req, res) => {
   req.files.map(file => {
     path = file.filename;
     try {
-      fse.copySync(FOLDER_PATHS.temp, "./gallery/" + picture + "/");
+      fse.copySync(TEMP_FOLDER, SAVE_FOLDER + category + "/");
     } catch (err) {
       console.error(err);
     }
 
     try {
-      fse.unlinkSync(FOLDER_PATHS.temp + path);
+      fse.unlinkSync(TEMP_FOLDER + path);
     } catch (err) {
       console.error(err);
     }
 
     let name = path.replace(/\..+$/, "");
-    let fullpath = picture + "/" + path;
+    let fullpath = category + "/" + path;
     let now = new Date();
 
     Gallery.updateOne(
-      { name: picture },
+      { name: category },
       {
         $push: {
           image: {

@@ -1,5 +1,4 @@
 import React from "react";
-import { BrowserRouter as Router } from "react-router-dom";
 import NET_CONFIG from "../paths";
 
 import ButtonClose from "../components/ButtonClose";
@@ -42,13 +41,11 @@ class CategoryAddContainer extends React.Component {
 
   render() {
     return (
-      <Router forceRefresh={true}>
-        <div className="col-4  h-20 align-self-center popup  text-uppercase">
-          <ButtonClose type="category" />
-          <CategoryForm onChange={this.handleChange} />
-          <ButtonSubmit type="category" handleCategory={this.handleCategory} />
-        </div>
-      </Router>
+      <div className="col-4  h-20 align-self-center popup  text-uppercase">
+        <ButtonClose type="category"/>
+        <CategoryForm onChange={this.handleChange} />
+        <ButtonSubmit type="category" handleCategory={this.handleCategory} />
+      </div>
     );
   }
 }

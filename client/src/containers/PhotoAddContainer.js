@@ -1,7 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router } from "react-router-dom";
 import NET_CONFIG from "../paths";
-
 import ButtonClose from "../components/ButtonClose";
 import PhotoForm from "../components/PhotoForm";
 import ButtonSubmit from "../components/ButtonSubmit";
@@ -40,7 +38,6 @@ class PhotoAddContainer extends React.Component {
 
   handleUploadImage() {
     const category = this.props.match.params.category;
-
     let data = new FormData();
     this.state.files.map(file => {
       return data.append("files", file);
@@ -62,26 +59,30 @@ class PhotoAddContainer extends React.Component {
     } else {
       alert("Vyber obrazok pre pridanie");
     }
+    console.log("FORM", this.state, url);
   }
 
   render() {
+    console.log("CATEGORY", this.props);
+    const category = this.props.match.params.category;
     return (
-      <Router>
-        <div className="row  no-gutters  w-100 h-100 justify-content-center ">
-          <div className="col-4 h-50 p-4 align-self-center popup  text-uppercase">
-            <ButtonClose type="photo" />
-            <PhotoForm
-              state={this.state}
-              onDrop={this.onDrop}
-              onDragEnter={this.onDragEnter}
-              onDragLeave={this.onDragLeave}
+      <div className="row  no-gutters  w-100 h-100 justify-content-center ">
+        <div className="col-4 h-50 p-4 align-self-center popup  text-uppercase">
+          <ButtonClose type="photo" />
+          <PhotoForm
+            state={this.state}
+            onDrop={this.onDrop}
+            onDragEnter={this.onDragEnter}
+            onDragLeave={this.onDragLeave}
+            handleUploadImage={this.handleUploadImage}
+          >
+            <ButtonSubmit
               handleUploadImage={this.handleUploadImage}
-            >
-              <ButtonSubmit handleUploadImage={this.handleUploadImage} />
-            </PhotoForm>
-          </div>
+              category={category}
+            />
+          </PhotoForm>
         </div>
-      </Router>
+      </div>
     );
   }
 }

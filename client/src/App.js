@@ -2,62 +2,82 @@ import React, { Component } from "react";
 
 import Header from "./components/Header";
 import ChangeableBackground from "./components/ChangeableBackground";
-import ItemsContainer from "./containers/ItemsContainer";
 import ItemAddContainer from "./containers/ItemAddContainer";
 import Footer from "./components/Footer";
 import NET_CONFIG from "./paths";
 import { withRouter } from "react-router";
+import Loadable from "react-loadable";
+
+const Loading = () => {
+  return <div>Loading...</div>;
+};
+const LoadItemsContainer = Loadable({
+  loader: () => import("./containers/LoadItemsContainer"),
+  loading: Loading,
+  delay: 300
+});
 class App extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       categories: [],
       images: [],
-      backgroundChange: ""
+      backgroundChange: "",
+      isFetching: false
     };
     this.handleHover = this.handleHover.bind(this);
   }
-
+  shouldComponentUpdate(nextProps, nextState) {
+    if (this.state === nextState) {
+      return false;
+    }
+    return true;
+  }
   componentDidMount() {
+    console.log(this.props.match);
     const url = this.props.match.url;
-    if (url === NET_CONFIG.root_dir || this.state.category === {}) {
-      fetch(url)
+    if (url === "/gallery") {
+      fetch(url) /*"http://localhost:5000" + */
         .then(res => res.json())
         .then(data => {
-          console.log("data", data);
-
           if (data.gallery[0].image[0].fullpath !== null) {
             this.setState({
               categories: data.gallery,
               backgroundChange:
-                NET_CONFIG.root_dir + data.gallery[0].image[0].fullpath
+                NET_CONFIG.root_dir + data.gallery[0].image[0].fullpath,
+              isFetching: true
             });
           }
         })
-        .then(() => console.log("this.state main", this.state))
         .catch(err => console.log("Something bad happened", err));
-    } else if (this.props.match.params.category) {
-      fetch(this.props.match.params.category)
+    } else {
+      fetch(
+        this.props.match.params.category
+      ) /*"http://localhost:5000/gallery/" + this.props.match.params.category*/
         .then(res => res.json())
         .then(data => {
-          console.log("data", data);
-
+          console.log("Data", data);
           if (data.gallery[0].image[0].fullpath !== null) {
             this.setState({
-              categories: {},
               images: data.gallery,
               backgroundChange:
-                NET_CONFIG.root_dir + data.gallery[0].image[0].fullpath
+                NET_CONFIG.root_dir + data.gallery[0].image[0].fullpath,
+              isFetching: true
             });
           }
         })
-        .then(() => console.log("this.state second", this.state))
-        .catch(err => console.log("Something bad happened", err));
+        .catch(err => {
+          console.log("Something bad happened", err);
+          this.setState({
+            isFetching: true
+          });
+        });
     }
   }
   handleHover(e) {
     e.persist();
     let nameOfPicture;
+    LoadItemsContainer.preload();
     if (this.props.images === undefined) {
       if (e.target.getAttribute("src") !== null) {
         nameOfPicture = e.target.getAttribute("src");
@@ -75,64 +95,64 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.props);
-    let images = this.state.images;
-    if (
-      images === undefined ||
-      this.state.categories === undefined ||
-      this.state.backgroundChange === undefined
-    ) {
-      return false;
-    }
-    let sliced = this.props.match.params.category;
+    const { images, isFetching } = this.state;
+    let pathname = this.props.match.url;
+    console.log(this.state);
+    let sliced = pathname.split("/")[2];
+
     if (
       images.length === 0 &&
       this.state.categories.length !== 0 &&
-      this.props.location.key !== undefined
+      this.props.location.key !== undefined &&
+      isFetching
     ) {
       return (
         <div>
           <ChangeableBackground change={this.state.backgroundChange} />
-          <Header subCategory={false} match={this.props} />
-          <ItemsContainer
+          <Header subCategory={false} />
+          <LoadItemsContainer
             key={this.props.location.key}
+            match={this.props.match}
             description={false}
             data={this.state.categories}
             handleHover={this.handleHover}
-            match={this.props.match}
           >
-            <ItemAddContainer subCategory={true} handleHover={false} />
-          </ItemsContainer>
+            <ItemAddContainer
+              subCategory={true}
+              handleHover={false}
+              match={this.props.match}
+            />
+          </LoadItemsContainer>
+
           <Footer />
         </div>
       );
-    } else if (
-      !this.state.categories &&
-      !this.state.images &&
-      this.props.location.key !== undefined
-    ) {
-      return <ItemAddContainer subCategory={true} match={this.props.match} />;
-    } else {
+    } else if (isFetching) {
       return (
         <div>
           <ChangeableBackground change={this.state.backgroundChange} />
-          <Header subCategory={true} sliced={sliced} match={this.props} />
-          <ItemsContainer
+          <Header subCategory={true} sliced={sliced} />
+
+          <LoadItemsContainer
             key={this.props.location.key}
+            match={this.props.match}
             description={true}
             data={images}
             handleHover={this.handleHover}
-            match={this.props.match}
           >
             <ItemAddContainer
               subCategory={false}
               data={this.state}
+              match={this.props.match}
               handleHover={false}
             />
-          </ItemsContainer>
+          </LoadItemsContainer>
+
           <Footer />
         </div>
       );
+    } else {
+      return "";
     }
   }
 }

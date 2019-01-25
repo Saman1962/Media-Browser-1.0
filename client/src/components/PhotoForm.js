@@ -1,9 +1,12 @@
-import React from 'react';
-import Dropzone from 'react-dropzone';
+import React from "react";
+import Dropzone from "react-dropzone";
+
+import PictureSymbol from "../images/glyph-iconset-master/svg/si-glyph-picture.svg";
+import AddPhotoIcon from "../images/add-photo-icon.svg";
 
 const PhotoForm = props => {
   let dropzoneRef;
-
+  
   return (
     <form
       className="p-4 h-100 w-100"
@@ -20,7 +23,7 @@ const PhotoForm = props => {
             dropzoneRef = node;
           }}
           className={
-            props.state.dropzoneActive ? 'dropzone--active' : 'dropzone'
+            props.state.dropzoneActive ? "dropzone--active" : "dropzone"
           }
           onDrop={props.onDrop}
           onDragEnter={props.onDragEnter}
@@ -29,18 +32,14 @@ const PhotoForm = props => {
           {props.state.files.map(i => (
             <img
               className="glyph-picture w-25 h-25"
-              src="/frontend/images/glyph-iconset-master/svg/si-glyph-picture.svg"
+              src={PictureSymbol}
               key={i.name}
               alt="vložená fotka"
             />
           ))}
           {props.state.files.length === 0 && (
             <div className="d-flex flex-column w-100 h-100 justify-content-center">
-              <img
-                className="plus__symbol"
-                src="/frontend/images/add-photo-icon.svg"
-                alt=""
-              />
+              <img className="plus__symbol" src={AddPhotoIcon} alt="" />
               <h4 className="item__title mx-auto dropzone__h4 mt-4">
                 Sem presuňte fotky
               </h4>
