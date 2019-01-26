@@ -7,7 +7,8 @@ Databáza funguje externe cez www.mlab.com.
 Ak nie je nainštalovaný _"Create React App"_ tak: _"npm install -g create-react-app"_
 
 1. _"npm install"_
-2. _"npm run dev"_
+2. _"npm run client-install"_
+3. _"npm run dev"_
 
 ## docker (testované u mňa s vymazanými všetkými containers a images, v priečinku treba mať docker-compose.yml a Dockerfile z https://github.com/Saman1962/website)
 
