@@ -1,6 +1,6 @@
 const NET_CONFIG = {
   protocol: "http://",
-  hostname: "0.0.0.0",
+  hostname: "localhost" /*0.0.0.0 */,
   port: ":5000",
   root_dir: "/gallery/"
 };
