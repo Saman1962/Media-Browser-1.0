@@ -9,7 +9,6 @@ import IconPhoto from "../images/add-photo-icon.svg";
 import IconCategory from "../images/add-category-plus-symbol.svg";
 
 const ItemAdd = props => {
-  console.log("ItemAdd", props);
   return (
     <Router forceRefresh={false}>
       <div className="item col-3  text-uppercase mr-lg-3 mr-sm-5 offset-xl-1">

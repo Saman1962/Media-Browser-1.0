@@ -3,10 +3,10 @@ import React, { Component } from "react";
 import Header from "./components/Header";
 import ChangeableBackground from "./components/ChangeableBackground";
 import ItemAddContainer from "./containers/ItemAddContainer";
+import LoadItemsContainer from "./containers/LoadItemsContainer";
 import Footer from "./components/Footer";
 import NET_CONFIG from "./paths";
 import { withRouter } from "react-router";
-
 
 class App extends Component {
   constructor(props) {
@@ -26,10 +26,9 @@ class App extends Component {
     return true;
   }
   componentDidMount() {
-    console.log(this.props.match);
     const url = this.props.match.url;
     if (url === "/gallery") {
-      fetch(url) /*"http://localhost:5000" + */
+      fetch(NET_CONFIG.protocol + NET_CONFIG.hostname + NET_CONFIG.port + url)
         .then(res => res.json())
         .then(data => {
           if (data.gallery[0].image[0].fullpath !== null) {
@@ -42,13 +41,16 @@ class App extends Component {
           }
         })
         .catch(err => console.log("Something bad happened", err));
-    } else {
+    } else if (this.props.match.params.category) {
       fetch(
-        this.props.match.params.category
-      ) /*"http://localhost:5000/gallery/" + this.props.match.params.category*/
+        NET_CONFIG.protocol +
+          NET_CONFIG.hostname +
+          NET_CONFIG.port +
+          NET_CONFIG.root_dir +
+          this.props.match.params.category
+      )
         .then(res => res.json())
         .then(data => {
-          console.log("Data", data);
           if (data.gallery[0].image[0].fullpath !== null) {
             this.setState({
               images: data.gallery,
@@ -69,7 +71,6 @@ class App extends Component {
   handleHover(e) {
     e.persist();
     let nameOfPicture;
-    LoadItemsContainer.preload();
     if (this.props.images === undefined) {
       if (e.target.getAttribute("src") !== null) {
         nameOfPicture = e.target.getAttribute("src");
@@ -89,7 +90,6 @@ class App extends Component {
   render() {
     const { images, isFetching } = this.state;
     let pathname = this.props.match.url;
-    console.log(this.state);
     let sliced = pathname.split("/")[2];
 
     if (

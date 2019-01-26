@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import EmptyCategory from "./EmptyCategory";
 const ListItemsWithDescription = props => {
-  console.log("ListDesc", props);
   return (
     <div className="container">
       <main>
@@ -12,7 +11,7 @@ const ListItemsWithDescription = props => {
               return (
                 <div
                   className="item col-3  text-uppercase "
-                  data-id={idx}
+                  key={idx}
                   onMouseEnter={props.handleHover}
                   onClick={props.handleClick}
                 >

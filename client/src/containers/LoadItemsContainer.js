@@ -24,7 +24,6 @@ class LoadItemsContainer extends React.Component {
   }
 
   render() {
-    console.log("Load Items Container", this.props, this.props.match);
     const { handleHover, handleClick, data, match } = this.props;
     const { photoIndex, isOpen } = this.state;
     const itemDescription = num => {

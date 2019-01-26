@@ -9,7 +9,7 @@ import "./css/main.css";
 ReactDOM.render(
   <Router>
     <div>
-      <Redirect from="/" to="/gallery" />
+      <Redirect from="/gallery/" to="/gallery" />
       <Route
         exact
         path="/gallery"

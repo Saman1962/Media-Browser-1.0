@@ -27,7 +27,6 @@ class ItemAddContainer extends React.Component {
   }
 
   render() {
-    console.log(this.props.match);
     if (!this.props.subCategory) {
       return (
         <ItemAdd
