@@ -28,7 +28,7 @@ class App extends Component {
   componentDidMount() {
     const url = this.props.match.url;
     if (url === "/gallery") {
-      fetch(url)
+      fetch(NET_CONFIG.protocol + NET_CONFIG.hostname + NET_CONFIG.port + url)
         .then(res => res.json())
         .then(data => {
           if (data.gallery[0].image[0].fullpath !== null) {
@@ -42,7 +42,13 @@ class App extends Component {
         })
         .catch(err => console.log("Something bad happened", err));
     } else if (this.props.match.params.category) {
-      fetch(this.props.match.params.category)
+      fetch(
+        NET_CONFIG.protocol +
+          NET_CONFIG.hostname +
+          NET_CONFIG.port +
+          NET_CONFIG.root_dir +
+          this.props.match.params.category
+      )
         .then(res => res.json())
         .then(data => {
           if (data.gallery[0].image[0].fullpath !== null) {
