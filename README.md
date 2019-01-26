@@ -4,6 +4,7 @@ Databáza funguje externe cez www.mlab.com.
 
 ## lokálne
 
+Ak nie je nainštalovaný *"Create React App"* tak: *"npm install -g create-react-app"*
 1. _"npm install"_
 2. _"npm run client-install"_
 3. _"npm run dev"_
