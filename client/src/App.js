@@ -6,16 +6,8 @@ import ItemAddContainer from "./containers/ItemAddContainer";
 import Footer from "./components/Footer";
 import NET_CONFIG from "./paths";
 import { withRouter } from "react-router";
-import Loadable from "react-loadable";
 
-const Loading = () => {
-  return <div>Loading...</div>;
-};
-const LoadItemsContainer = Loadable({
-  loader: () => import("./containers/LoadItemsContainer"),
-  loading: Loading,
-  delay: 300
-});
+
 class App extends Component {
   constructor(props) {
     super(props);
