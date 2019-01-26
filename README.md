@@ -14,6 +14,8 @@ V hlavnom priečinku :
 1. _"npm install"_
 2. _"npm run dev"_
 
+bude to dostupne v prehliadaci na localhost:3000
+
 ## docker (testované u mňa s vymazanými všetkými containers a images, v priečinku treba mať docker-compose.yml a Dockerfile z https://github.com/Saman1962/website)
 
 1. _"docker-compose pull app"_
