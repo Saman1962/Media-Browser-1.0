@@ -42,7 +42,10 @@ class App extends Component {
         })
         .catch(err => console.log("Something bad happened", err));
     } else if (this.props.match.params.category) {
-      fetch(this.props.match.params.category)
+      fetch(
+        
+          this.props.match.params.category
+      )
         .then(res => res.json())
         .then(data => {
           if (data.gallery[0].image[0].fullpath !== null) {
